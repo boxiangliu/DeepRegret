@@ -87,22 +87,6 @@ def partition(data, ratios):
 	return [data[partition_vec==i] for i in range(3)]
 
 
-def discretize(x):
-	'''Discretize x. Values less than -1.3 will be 0. 
-	Values greater than 1.3 will be 2. Values in between will 
-	be 1.
-	''' 
-	x=np.array(x)
-	y=np.zeros(x.shape[0])
-	for i in range(x.shape[0]):
-		if x[i] < -1.3:
-			y[i]=0
-		elif x[i] > 1.3:
-			y[i]=2
-		else:
-			y[i]=1
-	return y.astype(int)
-
 
 # seq_file='../data/yeast_promoters.txt'
 # expr_file='../data/complete_dataset.txt'
@@ -143,17 +127,17 @@ def read_data_sets(seq_file='../data/yeast_promoters.txt',expr_file='../data/com
 	train_nrow=train['one_hot_sequence'].shape[0]
 	train_seq=np.swapaxes(np.reshape(np.vstack(train['one_hot_sequence']),[train_nrow,4,1000]),1,2)
 	train_reg_exp=np.vstack(train['reg_exp'])
-	train_label=discretize(np.array(train['expression']))
+	train_label=np.array(train['expression'])
 
 	val_nrow=val['one_hot_sequence'].shape[0]
 	val_seq=np.swapaxes(np.reshape(np.vstack(val['one_hot_sequence']),[val_nrow,4,1000]),1,2)
 	val_reg_exp=np.vstack(val['reg_exp'])
-	val_label=discretize(np.array(val['expression']))
+	val_label=np.array(val['expression'])
 
 	test_nrow=test['one_hot_sequence'].shape[0]
 	test_seq=np.swapaxes(np.reshape(np.vstack(test['one_hot_sequence']),[test_nrow,4,1000]),1,2)
 	test_reg_exp=np.vstack(test['reg_exp'])
-	test_label=discretize(np.array(test['expression']))
+	test_label=np.array(test['expression'])
 
 	train_data=DataSet(train_seq, train_reg_exp, train_label)
 	val_data=DataSet(val_seq, val_reg_exp, val_label)

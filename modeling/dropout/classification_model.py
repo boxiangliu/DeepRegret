@@ -10,13 +10,13 @@ SEQ_LENGTH = 1000
 def conv_relu(input, kernal_shape, bias_shape,stride=4):
 	weights=tf.get_variable("weights", kernal_shape,initializer=tf.contrib.layers.xavier_initializer())
 	biases=tf.get_variable("biases", bias_shape,initializer=tf.constant_initializer(0.0))
-	conv=tf.nn.conv1d(input,weights,stride=stride, padding='SAME')
+	conv=tf.nn.conv1d(input,weights,stride=stride, padding='VALID')
 	relu=tf.nn.relu(conv+biases)
 	return(relu)
 
 
 # build sequence model:
-def build_sequence_model(seq,conv1_filter=32,conv2_filter=256,stride=4):
+def build_sequence_model(seq,conv1_filter_depth=32,conv2_filter_depth=256,stride=4):
 	'''sequence model consists of 2 convolutional layers 
 	with ReLU activations. 
 	the first convolutional layers uses 32 filters with size 4x100;
@@ -24,11 +24,11 @@ def build_sequence_model(seq,conv1_filter=32,conv2_filter=256,stride=4):
 	'''
 	# first conv layer: 
 	with tf.variable_scope('conv1'):
-		relu1=conv_relu(seq,[100,4,conv1_filter],[conv1_filter],stride)
+		relu1=conv_relu(seq,[100,4,conv1_filter_depth],[conv1_filter_depth],stride)
 
 	# second conv layer:
 	with tf.variable_scope('conv2'):
-		relu2=conv_relu(relu1,[15,32,conv2_filter],[conv2_filter],stride)
+		relu2=conv_relu(relu1,[15,32,conv2_filter_depth],[conv2_filter_depth],stride)
 
 	relu1_length=math.ceil(float(SEQ_LENGTH)/float(stride))
 	relu2_length=math.ceil(float(relu1_length)/float(stride))
@@ -64,9 +64,9 @@ def concatenate(sequence_model,regulator_model,batch_size):
 
 
 # build softmax prediction model:
-def classification(concat_model,keep_prob,concat_model_length,hidden_layer_size=512):
+def classification(concat_model,keep_prob,hidden_layer_size):
 	with tf.variable_scope('class_hidden1'):
-		class_hidden1=fully_connected_relu(concat_model, [concat_model_length,hidden_layer_size], [hidden_layer_size])
+		class_hidden1=fully_connected_relu(concat_model, [concat_model.get_shape().as_list()[1],hidden_layer_size], [hidden_layer_size])
 
 	with tf.variable_scope('class_hidden2'):
 		class_hidden2=fully_connected_relu(class_hidden1, [hidden_layer_size,hidden_layer_size], [hidden_layer_size])
@@ -82,16 +82,15 @@ def classification(concat_model,keep_prob,concat_model_length,hidden_layer_size=
 
 # build entire inference graph: 
 def inference(seq,regulator_expression,keep_prob,batch_size):
-	conv1_filter=32
-	conv2_filter=256
+	conv1_filter_depth=32
+	conv2_filter_depth=256
 	stride=4
 	reg_model_hidden_layer_size=512
 	concat_model_hidden_layer_size=512
-	seq_model,conv2_length=build_sequence_model(seq,conv1_filter,conv2_filter,stride)
+	seq_model,_=build_sequence_model(seq,conv1_filter_depth,conv2_filter_depth,stride)
 	regulator_model=build_regulator_model(regulator_expression,reg_model_hidden_layer_size)
-	concat_model_length=int(conv2_length*conv2_filter)+reg_model_hidden_layer_size
 	concat_model=concatenate(seq_model,regulator_model,batch_size)
-	logits=classification(concat_model,keep_prob,concat_model_length,concat_model_hidden_layer_size)
+	logits=classification(concat_model,keep_prob,concat_model_hidden_layer_size)
 	return(logits)
 
 

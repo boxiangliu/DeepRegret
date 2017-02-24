@@ -11,7 +11,7 @@ import numpy as np
 from six.moves import xrange
 import tensorflow as tf
 
-import classification_model
+import regression_model
 import input_data
 
 
@@ -27,9 +27,9 @@ def placeholder_inputs(batch_size):
 	  labels_placeholder: Labels placeholder.
 	"""
 	# create placeholders: 
-	seq_placeholder = tf.placeholder(tf.float32, shape=(batch_size,classification_model.SEQ_LENGTH,4))
-	reg_expr_placeholder = tf.placeholder(tf.float32, shape=(batch_size,classification_model.NUM_REG))
-	labels_placeholder = tf.placeholder(tf.int32, shape=(batch_size))
+	seq_placeholder = tf.placeholder(tf.float32, shape=(batch_size,regression_model.SEQ_LENGTH,4))
+	reg_expr_placeholder = tf.placeholder(tf.float32, shape=(batch_size,regression_model.NUM_REG))
+	labels_placeholder = tf.placeholder(tf.float32, shape=(batch_size))
 	keep_prob = tf.placeholder(tf.float32)
 	return seq_placeholder, reg_expr_placeholder, labels_placeholder, keep_prob
 
@@ -50,7 +50,7 @@ def fill_feed_dict(data_set, seq_pl, reg_expr_pl, labels_pl, keep_prob_pl, keep_
 	return feed_dict
 
 
-def do_eval(sess,eval_correct,seq_placeholder,reg_expr_placeholder,labels_placeholder,keep_prob_pl,data_set,global_step,outfile):
+def do_eval(sess,eval_sse,seq_placeholder,reg_expr_placeholder,labels_placeholder,keep_prob_pl,data_set,global_step,outfile):
 	"""Runs one evaluation against the full epoch of data.
 	Args:
 		sess: The session in which the model has been trained.
@@ -62,15 +62,15 @@ def do_eval(sess,eval_correct,seq_placeholder,reg_expr_placeholder,labels_placeh
 		  input_data.read_data_sets().
 	"""
 	# And run one epoch of eval.
-	true_count = 0  # Counts the number of correct predictions.
+	sse = 0  # Counts the number of correct predictions.
 	steps_per_epoch = data_set.num_examples // FLAGS.batch_size
 	num_examples = steps_per_epoch * FLAGS.batch_size
 	for step in xrange(steps_per_epoch):
 		feed_dict = fill_feed_dict(data_set,seq_placeholder,reg_expr_placeholder,labels_placeholder,keep_prob_pl,keep_prob=1.0,batch_size=FLAGS.batch_size)
-		true_count += sess.run(eval_correct, feed_dict=feed_dict)
-		accuracy = float(true_count) / num_examples
-	print('  Num examples: %d  Num correct: %d  Accuracy @ 1: %0.04f' % (num_examples, true_count, accuracy))
-	outfile.write("%d\t%d\t%d\t%0.04f\n"%(global_step, num_examples, true_count, accuracy))
+		sse += sess.run(eval_sse, feed_dict=feed_dict)
+	mse = float(sse) / num_examples
+	print('  Num examples: %d  SSE: %0.04f  MSE: %0.04f' % (num_examples, sse, mse))
+	outfile.write("%d\t%d\t%d\t%0.04f\n"%(global_step, num_examples, sse, mse))
 
 
 def run_training():
@@ -83,16 +83,16 @@ def run_training():
 		seq_placeholder, reg_expr_placeholder, labels_placeholder, keep_prob_pl = placeholder_inputs(FLAGS.batch_size)
 
 		# Build a Graph that computes predictions from the inference model.
-		logits = classification_model.inference(seq_placeholder,reg_expr_placeholder,keep_prob_pl,FLAGS.batch_size)
+		y = regression_model.inference(seq_placeholder,reg_expr_placeholder,keep_prob_pl,FLAGS.batch_size)
 
 		# Add to the Graph the Ops for loss calculation.
-		loss = classification_model.loss(logits, labels_placeholder)
+		loss = regression_model.loss(y, labels_placeholder)
 
 		# Add to the Graph the Ops that calculate and apply gradients.
-		train_op = classification_model.training(loss, FLAGS.learning_rate)
+		train_op = regression_model.training(loss, FLAGS.learning_rate)
 
 		# Add the Op to compare the logits to the labels during evaluation.
-		eval_correct = classification_model.evaluation(logits, labels_placeholder)
+		eval_sse = regression_model.evaluation(y, labels_placeholder)
 
 		# Add summaries: 
 		tf.summary.scalar('loss', loss)
@@ -107,7 +107,7 @@ def run_training():
 		saver = tf.train.Saver()
 
 		# Create a session for running Ops on the Graph.
-		sess = tf.Session()
+		sess = tf.Session(config=tf.ConfigProto(intra_op_parallelism_threads=FLAGS.threads))
 
 		# Instantiate a SummaryWriter to output summaries and the Graph.
 		summary_writer = tf.summary.FileWriter(FLAGS.log_dir,sess.graph)
@@ -115,9 +115,9 @@ def run_training():
 		# And then after everything is built:
 
 		# Open files to write: 
-		train_log=open(FLAGS.log_dir+'/train_accuracy.log','w')
-		val_log=open(FLAGS.log_dir+'/val_accuracy.log','w')
-		test_log=open(FLAGS.log_dir+'/test_accuracy.log','w')
+		train_log=open(FLAGS.log_dir+'/train_mse.log','w')
+		val_log=open(FLAGS.log_dir+'/val_mse.log','w')
+		test_log=open(FLAGS.log_dir+'/test_mse.log','w')
 
 		# Run the Op to initialize the variables.
 		sess.run(init)
@@ -152,21 +152,21 @@ def run_training():
 
 				# Evaluate against the training set.
 				print('Training Data Eval:')
-				do_eval(sess,eval_correct,seq_placeholder,reg_expr_placeholder,labels_placeholder,keep_prob_pl,data_sets.train,step,train_log)
+				do_eval(sess,eval_sse,seq_placeholder,reg_expr_placeholder,labels_placeholder,keep_prob_pl,data_sets.train,step,train_log)
 				
 				# Evaluate against the validation set.
 				print('Validation Data Eval:')
-				do_eval(sess,eval_correct,seq_placeholder,reg_expr_placeholder,labels_placeholder,keep_prob_pl,data_sets.validation,step,val_log)
+				do_eval(sess,eval_sse,seq_placeholder,reg_expr_placeholder,labels_placeholder,keep_prob_pl,data_sets.validation,step,val_log)
 				
 				# Evaluate against the test set.
 				print('Test Data Eval:')
-				do_eval(sess,eval_correct,seq_placeholder,reg_expr_placeholder,labels_placeholder,keep_prob_pl,data_sets.test,step,test_log)
+				do_eval(sess,eval_sse,seq_placeholder,reg_expr_placeholder,labels_placeholder,keep_prob_pl,data_sets.test,step,test_log)
 
-		# Close files: 
+		# Close files and session: 
 		train_log.close()
 		val_log.close()
 		test_log.close()
-
+		sess.close()
 
 def main(_):
 	if tf.gfile.Exists(FLAGS.log_dir):
@@ -184,6 +184,7 @@ if __name__ == '__main__':
 	parser.add_argument('--expr_file',type=str,default='../data/complete_dataset.txt',help='Path to expression data.')
 	parser.add_argument('--reg_names_file',type=str,default='../data/reg_names_R.txt',help='Path to regulator names.')
 	parser.add_argument('--log_dir',type=str,default='../processed_data/',help='Directory to put the log data.')
+	parser.add_argument('--threads',type=int,default=10,help='Number of threads to train the model.')
 	FLAGS, unparsed = parser.parse_known_args()
 	tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
 
