@@ -102,9 +102,6 @@ def inference(seq,regulator_expression,keep_prob,batch_size):
 
 
 # define loss function:
-# def loss(y,y_):
-# 	huber=tf.cond(tf.abs(y-y_) < 0.5, lambda: tf.square(y-y_), lambda: tf.abs(y-y_))
-# 	return tf.reduce_mean(huber,name='huber_mean')
 def loss(y,y_):
 	se=tf.square(y-y_, name='se')
 	return tf.reduce_mean(se,name='mse')

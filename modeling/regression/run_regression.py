@@ -170,7 +170,7 @@ def run_training():
 
 def main(_):
 	if tf.gfile.Exists(FLAGS.log_dir):
-		tf.gfile.DeleteRecursively(FLAGS.log_dir)
+		pass
 	tf.gfile.MakeDirs(FLAGS.log_dir)
 	run_training()
 
@@ -184,7 +184,7 @@ if __name__ == '__main__':
 	parser.add_argument('--expr_file',type=str,default='../data/complete_dataset.txt',help='Path to expression data.')
 	parser.add_argument('--reg_names_file',type=str,default='../data/reg_names_R.txt',help='Path to regulator names.')
 	parser.add_argument('--log_dir',type=str,default='../processed_data/',help='Directory to put the log data.')
-	parser.add_argument('--threads',type=int,default=10,help='Number of threads to train the model.')
+	parser.add_argument('--threads',type=int,default=48,help='Number of threads to train the model.')
 	FLAGS, unparsed = parser.parse_known_args()
 	tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
 

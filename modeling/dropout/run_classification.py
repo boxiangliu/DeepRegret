@@ -170,7 +170,7 @@ def run_training():
 
 def main(_):
 	if tf.gfile.Exists(FLAGS.log_dir):
-		tf.gfile.DeleteRecursively(FLAGS.log_dir)
+		pass
 	tf.gfile.MakeDirs(FLAGS.log_dir)
 	run_training()
 

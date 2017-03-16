@@ -19,7 +19,7 @@ class DataSet(object):
 
 	@property
 	def seqs(self):
-		return self._images
+		return self._seqs
 
 	@property
 	def reg_exprs(self):
