@@ -42,3 +42,19 @@ python modeling/regression/run_knockdown.py --batch_size 473 --fold_change 0.0 -
 
 # Perform overexpression experiment.
 python modeling/regression/run_overexpress.py --batch_size 473 --fold_change 3.0 --out ../processed_data/regression/overexpress_prediction.oe_3.txt --graph /srv/persistent/bliu2/deepregret/processed_data/regression/model.ckpt-199999.meta --log_dir /srv/persistent/bliu2/deepregret/processed_data/regression/
+
+
+# Improving the model with smaller filter size:
+mkdir -p ../processed_data/small_filter ../figures/small_filter
+python -u modeling/small_filter/run_regression.py --max_steps=200000 --log_dir=../processed_data/small_filter/ &> ../logs/small_filter.log
+python evaluation/plot_accuracy.py --train ../processed_data/small_filter/train_mse.log --val ../processed_data/small_filter/val_mse.log --test ../processed_data/small_filter/test_mse.log --fig ../figures/small_filter/mse.pdf
+python modeling/regression/prediction.py --graph ../processed_data/small_filter/model.ckpt-199999.meta --log_dir ../processed_data/small_filter/
+python modeling/regression/plot_prediction.py --pred ../processed_data/small_filter/prediction.txt --fig ../figures/small_filter/pred_vs_obs.png
+
+
+# Adding a pooling layer:
+mkdir -p ../processed_data/pooling ../figures/pooling
+python -u modeling/pooling/run_regression.py --max_steps=200000 --log_dir=../processed_data/pooling/ &> ../logs/pooling.log
+python evaluation/plot_accuracy.py --train ../processed_data/pooling/train_mse.log --val ../processed_data/pooling/val_mse.log --test ../processed_data/pooling/test_mse.log --fig ../figures/pooling/mse.pdf
+python modeling/regression/prediction.py --graph ../processed_data/pooling/model.ckpt-199999.meta --log_dir ../processed_data/pooling/
+python modeling/regression/plot_prediction.py --pred ../processed_data/pooling/prediction.txt --fig ../figures/pooling/pred_vs_obs.png

@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt
+import os 
 
 # Functions: 
 def tmp_processing(df):
@@ -18,6 +19,9 @@ parser.add_argument('--val',help='validation accuracy file',default='../processe
 parser.add_argument('--test',help='test accuracy file',default='../processed_data/dropout/test_accuracy.log')
 parser.add_argument('--fig',help='output figure file',default='../figures/dropout/accuracy.pdf')
 args=parser.parse_args()
+
+if not os.path.isdir(os.path.dirname(args.fig)):
+	os.makedirs(os.path.dirname(args.fig))
 
 train=pd.read_table(args.train,header=None,names=['step','num_example','num_correct','accuracy'])
 val=pd.read_table(args.val,header=None,names=['step','num_example','num_correct','accuracy'])
