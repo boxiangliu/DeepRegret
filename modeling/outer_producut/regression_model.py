@@ -16,7 +16,7 @@ def conv_relu(input, kernal_shape, bias_shape,stride=4):
 
 
 # build sequence model:
-def build_sequence_model(seq,conv1_filter_depth,conv2_filter_depth,stride):
+def build_sequence_model(seq,conv1_filter_depth=128,conv2_filter_depth=256,stride=1):
 	'''sequence model consists of 2 convolutional layers 
 	with ReLU activations. 
 	the first convolutional layers uses 32 filters with size 4x100;
@@ -24,11 +24,11 @@ def build_sequence_model(seq,conv1_filter_depth,conv2_filter_depth,stride):
 	'''
 	# first conv layer: 
 	with tf.variable_scope('conv1'):
-		relu1=conv_relu(seq,[15,4,conv1_filter_depth],[conv1_filter_depth],stride)
+		relu1=conv_relu(seq,[5,4,conv1_filter_depth],[conv1_filter_depth],stride)
 
 	# second conv layer:
 	with tf.variable_scope('conv2'):
-		relu2=conv_relu(relu1,[15,conv1_filter_depth,conv2_filter_depth],[conv2_filter_depth],stride)
+		relu2=conv_relu(relu1,[5,conv1_filter_depth,conv2_filter_depth],[conv2_filter_depth],stride)
 
 
 	relu1_length=math.ceil(float(SEQ_LENGTH)/float(stride))
@@ -90,7 +90,7 @@ def regression(concat_model,keep_prob,hidden_layer_size=512):
 
 # build entire inference graph: 
 def inference(seq,regulator_expression,keep_prob,batch_size):
-	conv1_filter_depth=32
+	conv1_filter_depth=128
 	conv2_filter_depth=256
 	stride=1
 	seq_model,_=build_sequence_model(seq,conv1_filter_depth,conv2_filter_depth,stride)

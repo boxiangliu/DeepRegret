@@ -58,3 +58,6 @@ python -u modeling/pooling/run_regression.py --max_steps=200000 --log_dir=../pro
 python evaluation/plot_accuracy.py --train ../processed_data/pooling/train_mse.log --val ../processed_data/pooling/val_mse.log --test ../processed_data/pooling/test_mse.log --fig ../figures/pooling/mse.pdf
 python modeling/regression/prediction.py --graph ../processed_data/pooling/model.ckpt-199999.meta --log_dir ../processed_data/pooling/
 python modeling/regression/plot_prediction.py --pred ../processed_data/pooling/prediction.txt --fig ../figures/pooling/pred_vs_obs.png
+
+
+# Adding a bypass layer: 

@@ -120,6 +120,7 @@ def read_data_sets(seq_file='../data/yeast_promoters.txt',expr_file='../data/com
 		data = np.array([exp_level for exp_level in reg_data.iloc[:, col]])
 		reg = reg.append(pd.DataFrame({"experiment": reg_data.columns[col], "reg_exp": [data]}))
 
+
 	data_complete = pd.merge(promoters, target_expr_data, on="UID", how="inner").merge(reg, on="experiment", how="inner")
 
 	train, val, test = partition(data_complete, (80,10,10))

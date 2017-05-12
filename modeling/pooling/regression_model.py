@@ -4,44 +4,48 @@ import math
 # Constants: 
 NUM_REG = 472
 SEQ_LENGTH = 1000
-SEQ_HEIGHT = 4
+
 
 # helper function to build convolutional layer with relu activation: 
-def conv_relu(input, kernal_shape, bias_shape,stride):
+def conv_relu(input, kernal_shape, bias_shape,stride=4):
 	weights=tf.get_variable("weights", kernal_shape,initializer=tf.contrib.layers.xavier_initializer())
 	biases=tf.get_variable("biases", bias_shape,initializer=tf.constant_initializer(0.0))
-	conv=tf.nn.conv2d(input,weights,strides=stride,padding='VALID')
+	conv=tf.nn.conv1d(input,weights,stride=stride, padding='SAME')
 	relu=tf.nn.relu(conv+biases)
 	return(relu)
 
 
 # build sequence model:
-def build_sequence_model(seq,conv1_filter_depth=256,conv2_filter_depth=512,conv3_filter_depth=1024,conv4_filter_depth=2048,stride=[1,1,1,1]):
+def build_sequence_model(seq,conv1_filter_depth=256,conv2_filter_depth=512,conv3_filter_depth=1024,conv4_filter_depth=2048,stride=1):
 	'''sequence model consists of 4 convolutional layers 
-	with ReLU activations.
+	with ReLU activations. 
 	'''
-	filter_width=5
 	# first conv layer: 
 	with tf.variable_scope('conv1'):
-		relu1=conv_relu(seq,[4,filter_width,1,conv1_filter_depth],[conv1_filter_depth],stride)
+		relu1=conv_relu(seq,[5,4,conv1_filter_depth],[conv1_filter_depth],stride)
 
 	# second conv layer:
 	with tf.variable_scope('conv2'):
-		relu2=conv_relu(relu1,[1,filter_width,conv1_filter_depth,conv2_filter_depth],[conv2_filter_depth],stride)
+		relu2=conv_relu(relu1,[5,conv1_filter_depth,conv2_filter_depth],[conv2_filter_depth],stride)
 
 	# third conv layer: 
-	with tf.variable_scope('conv1'):
-		relu3=conv_relu(relu2,[1,filter_width,conv2_filter_depth,conv3_filter_depth],[conv3_filter_depth],stride)
+	with tf.variable_scope('conv3'):
+		relu3=conv_relu(relu2,[5,conv2_filter_depth,conv3_filter_depth],[conv3_filter_depth],stride)
 
 	# fourth conv layer:
-	with tf.variable_scope('conv2'):
-		relu4=conv_relu(relu3,[1,filter_width,conv3_filter_depth,conv4_filter_depth],[conv_filter_depth],stride)
+	with tf.variable_scope('conv4'):
+		relu4=conv_relu(relu3,[5,conv3_filter_depth,conv4_filter_depth],[conv4_filter_depth],stride)
+
+	# pooling layer: 
+	with tf.variable_scope('pool'):
+		pool=tf.layers.max_pooling1d(relu4,pool_size=100,strides=25)
+
 
 	relu1_length=math.ceil(float(SEQ_LENGTH)/float(stride))
 	relu2_length=math.ceil(float(relu1_length)/float(stride))
 
 	# return: 
-	return relu2,relu2_length
+	return pool,relu2_length
 
 # helper function to construct fully connected layers with ReLU activation:
 def fully_connected_relu(input,weight_shape,bias_shape):
@@ -100,7 +104,7 @@ def inference(seq,regulator_expression,keep_prob,batch_size):
 	conv2_filter_depth=512
 	conv3_filter_depth=1024
 	conv4_filter_depth=2048
-	stride=[1,1,1,1]
+	stride=1
 	seq_model,_=build_sequence_model(seq,conv1_filter_depth,conv2_filter_depth,conv3_filter_depth,conv4_filter_depth,stride)
 
 
