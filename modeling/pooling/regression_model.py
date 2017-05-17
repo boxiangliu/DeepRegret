@@ -10,36 +10,29 @@ SEQ_LENGTH = 1000
 def conv_relu(input, kernal_shape, bias_shape,stride=4):
 	weights=tf.get_variable("weights", kernal_shape,initializer=tf.contrib.layers.xavier_initializer())
 	biases=tf.get_variable("biases", bias_shape,initializer=tf.constant_initializer(0.0))
-	conv=tf.nn.conv1d(input,weights,stride=stride, padding='SAME')
+	conv=tf.nn.conv1d(input,weights,stride=stride, padding='VALID')
 	relu=tf.nn.relu(conv+biases)
 	return(relu)
 
 
 # build sequence model:
-def build_sequence_model(seq,conv1_filter_depth=256,conv2_filter_depth=512,conv3_filter_depth=1024,conv4_filter_depth=2048,stride=1):
-	'''sequence model consists of 4 convolutional layers 
+def build_sequence_model(seq,conv1_filter_depth,conv2_filter_depth,stride):
+	'''sequence model consists of 2 convolutional layers 
 	with ReLU activations. 
+	the first convolutional layers uses 32 filters with size 4x100;
+	the second convolutional layer uses 256 filters with size 32x15.
 	'''
 	# first conv layer: 
 	with tf.variable_scope('conv1'):
-		relu1=conv_relu(seq,[5,4,conv1_filter_depth],[conv1_filter_depth],stride)
+		relu1=conv_relu(seq,[15,4,conv1_filter_depth],[conv1_filter_depth],stride)
 
 	# second conv layer:
 	with tf.variable_scope('conv2'):
-		relu2=conv_relu(relu1,[5,conv1_filter_depth,conv2_filter_depth],[conv2_filter_depth],stride)
+		relu2=conv_relu(relu1,[15,conv1_filter_depth,conv2_filter_depth],[conv2_filter_depth],stride)
 
-	# third conv layer: 
-	with tf.variable_scope('conv3'):
-		relu3=conv_relu(relu2,[5,conv2_filter_depth,conv3_filter_depth],[conv3_filter_depth],stride)
-
-	# fourth conv layer:
-	with tf.variable_scope('conv4'):
-		relu4=conv_relu(relu3,[5,conv3_filter_depth,conv4_filter_depth],[conv4_filter_depth],stride)
-
-	# pooling layer: 
+	# convolution layer:
 	with tf.variable_scope('pool'):
-		pool=tf.layers.max_pooling1d(relu4,pool_size=100,strides=25)
-
+		pool=tf.layers.max_pooling1d(relu2, 35, 15)
 
 	relu1_length=math.ceil(float(SEQ_LENGTH)/float(stride))
 	relu2_length=math.ceil(float(relu1_length)/float(stride))
@@ -100,23 +93,19 @@ def regression(concat_model,keep_prob,hidden_layer_size=512):
 
 # build entire inference graph: 
 def inference(seq,regulator_expression,keep_prob,batch_size):
-	conv1_filter_depth=256
-	conv2_filter_depth=512
-	conv3_filter_depth=1024
-	conv4_filter_depth=2048
+	conv1_filter_depth=32
+	conv2_filter_depth=256
 	stride=1
-	seq_model,_=build_sequence_model(seq,conv1_filter_depth,conv2_filter_depth,conv3_filter_depth,conv4_filter_depth,stride)
+	seq_model,_=build_sequence_model(seq,conv1_filter_depth,conv2_filter_depth,stride)
+	seq_model=tf.reshape(seq_model, shape=[batch_size,-1,1])
 
 
-	reg_model_hidden_layer_size=512
-	regulator_model=build_regulator_model(regulator_expression,reg_model_hidden_layer_size)
+	regulator_expression=tf.reshape(regulator_expression, shape=[batch_size,1,NUM_REG])
+	outer=tf.reshape(tf.matmul(seq_model,regulator_expression),[batch_size,-1])
 
 
 	concat_model_hidden_layer_size=512
-	concat_model=concatenate(seq_model,regulator_model,batch_size)
-
-
-	pred=regression(concat_model,keep_prob,concat_model_hidden_layer_size)
+	pred=regression(outer,keep_prob,concat_model_hidden_layer_size)
 	return(pred)
 
 

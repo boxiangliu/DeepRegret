@@ -60,4 +60,11 @@ python modeling/regression/prediction.py --graph ../processed_data/pooling/model
 python modeling/regression/plot_prediction.py --pred ../processed_data/pooling/prediction.txt --fig ../figures/pooling/pred_vs_obs.png
 
 
-# Adding a bypass layer: 
+# Use outer product to concatenate: 
+mkdir -p ../processed_data/outer_product ../figures/outer_product
+python -u modeling/outer_product/run_regression.py --max_steps=200000 --log_dir=../processed_data/outer_product/ &> ../logs/outer_product.log
+python evaluation/plot_accuracy.py --train ../processed_data/outer_product/train_mse.log --val ../processed_data/outer_product/val_mse.log --test ../processed_data/outer_product/test_mse.log --fig ../figures/outer_product/mse.pdf
+python modeling/regression/prediction.py --graph ../processed_data/outer_product/model.ckpt-199999.meta --log_dir ../processed_data/outer_product/
+python modeling/regression/plot_prediction.py --pred ../processed_data/outer_product/prediction.txt --fig ../figures/outer_product/pred_vs_obs.png
+
+
