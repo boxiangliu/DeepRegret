@@ -4,13 +4,10 @@ from keras.regularizers import l1
 from keras.optimizers import Adam, SGD
 from keras.callbacks import EarlyStopping, ModelCheckpoint, Callback
 from keras.utils import plot_model
-<<<<<<< HEAD
 import matplotlib as mpl
 mpl.use('Agg')
-=======
-from keras import backend as K
->>>>>>> ec73fea0f2d106eb889caf6fd2597ac2d0865898
 import matplotlib.pyplot as plt
+from keras import backend as K
 import numpy as np
 import sys
 from pdb import set_trace
@@ -47,25 +44,15 @@ print('INFO - %s'%('building sequence model.'))
 filters=[32,256]
 kernel_width=[100,15]
 seq_input=Input(shape=(4,seq_length,1),dtype='float32',name='seq_input')
-<<<<<<< HEAD
-x=Conv2D(filters=filters[0],kernel_size=(4,kernel_width[0]),strides=4,padding='valid',activation='relu',kernel_regularizer=l1(L1),bias_regularizer=l1(L1))(seq_input)
-x=Conv2D(filters=filters[1],kernel_size=(1,kernel_width[1]),strides=4,padding='valid',activation='relu',kernel_regularizer=l1(L1),bias_regularizer=l1(L1))(x)
-=======
 x=Conv2D(filters=filters[0],kernel_size=(4,kernel_width[0]),strides=4,padding='valid',activation='relu',kernel_initializer='glorot_uniform',bias_initializer='zeros')(seq_input)
 x=Conv2D(filters=filters[1],kernel_size=(1,kernel_width[1]),strides=4,padding='valid',activation='relu',kernel_initializer='glorot_uniform',bias_initializer='zeros')(x)
->>>>>>> ec73fea0f2d106eb889caf6fd2597ac2d0865898
 seq_output=Flatten()(x)
 
 print('INFO - %s'%('building concatenate model.'))
 units=512
 x=concatenate([reg_output,seq_output])
-<<<<<<< HEAD
-x=Dense(units,activation='relu')(x)
-x=Dense(units,activation='relu')(x)
-=======
 x=Dense(units,activation='relu',kernel_initializer='glorot_uniform',bias_initializer='zeros')(x)
-x=Dense(units,activation='relu',kernel_initializer='glorot_uniform',bias_initializer='zeros')(x)	
->>>>>>> ec73fea0f2d106eb889caf6fd2597ac2d0865898
+x=Dense(units,activation='relu',kernel_initializer='glorot_uniform',bias_initializer='zeros')(x)
 x=Dropout(0.5,seed=42)(x)
 rgs_output=Dense(1,activation='linear',name='rgs_output')(x)
 
@@ -86,11 +73,6 @@ prediction=Prediction(log_dir='../logs/keras')
 model.fit({'seq_input':train['seq'],'reg_input':train['reg']},{'rgs_output':train['expr']},validation_data=({'seq_input':val['seq'],'reg_input':val['reg']},{'rgs_output':val['expr']}),epochs=30,batch_size=100,callbacks=[early_stopping,prediction],verbose=1)
 
 
-
-<<<<<<< HEAD
-# model.evaluate({'seq_input':test['seq'],'reg_input':test['reg']},{'rgs_output':test['expr']},batch_size=100)
-=======
->>>>>>> ec73fea0f2d106eb889caf6fd2597ac2d0865898
 pred=model.predict({'seq_input':test['seq'],'reg_input':test['reg']},batch_size=1000,verbose=1)
 plt.scatter(pred,test['expr'])
 plt.savefig("%s/pred_vs_obs.png"%('../figures/keras'))
