@@ -24,7 +24,8 @@ python modeling/dropout/confusion_matrix.py --graph /srv/persistent/bliu2/deepre
 
 # Regression with dropout: 
 mkdir -p ../processed_data/regression/ ../figures/regression
-python -u modeling/regression/run_regression.py --max_steps=200000 --log_dir=../processed_data/regression/ &> ../logs/regression.log
+# python -u modeling/regression/run_regression.py --max_steps=200000 --log_dir=../processed_data/regression/ &> ../logs/regression.log
+python -u modeling/regression/run_regression.py --max_steps=200000 --log_dir=../processed_data/regression.2/ &> ../logs/regression.2.log
 python evaluation/plot_accuracy.py --train ../processed_data/regression/train_mse.log --val ../processed_data/regression/val_mse.log --test ../processed_data/regression/test_mse.log --fig ../figures/regression/mse.pdf
 python modeling/regression/prediction.py --graph /srv/persistent/bliu2/deepregret/processed_data/regression/model.ckpt-199999.meta --log_dir /srv/persistent/bliu2/deepregret/processed_data/regression/
 python modeling/regression/plot_prediction.py --pred ../processed_data/regression/prediction.txt --fig ../figures/regression/pred_vs_obs.png
