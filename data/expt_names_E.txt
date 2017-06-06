@@ -1,0 +1,173 @@
+1	Heat Shock 05 minutes hs-1
+2	Heat Shock 10 minutes hs-1
+3	Heat Shock 15 minutes hs-1
+4	Heat Shock 20 minutes hs-1
+5	Heat Shock 30 minutes hs-1
+6	Heat Shock 40 minutes hs-1
+7	Heat Shock 60 minutes hs-1
+8	Heat Shock 80 minutes hs-1
+9	Heat Shock 000 minutes  hs-2	R
+10	Heat Shock 000 minutes  hs-2	R
+11	Heat Shock 000 minutes  hs-2	R
+12	Heat Shock 005 minutes  hs-2
+13	Heat Shock 015 minutes  hs-2
+14	Heat Shock 030 minutes  hs-2
+15	Heat Shock 060 minutes  hs-2
+16	37C to 25C shock - 15 min
+17	37C to 25C shock - 30 min
+18	37C to 25C shock - 45 min
+19	37C to 25C shock - 60 min
+20	37C to 25C shock - 90 min
+21	"heat shock 17 to 37, 20 minutes"
+22	"heat shock 21 to 37, 20 minutes"
+23	"heat shock 25 to 37, 20 minutes"
+24	"heat shock 29 to 37, 20 minutes"
+25	"heat shock 33 to 37, 20 minutes"
+26	29C to 33C - 5 minutes
+27	29C to 33C - 15 minutes
+28	29C to 33C - 30 minutes
+29	33C vs. 30C - 90 minutes
+30	29C +1M sorbitol to 33C + 1M sorbitol - 5 minutes
+31	29C +1M sorbitol to 33C + 1M sorbitol - 15 minutes
+32	29C +1M sorbitol to 33C + 1M sorbitol - 30 minutes
+33	29C +1M sorbitol to 33C + *NO sorbitol - 5 minutes
+34	29C +1M sorbitol to 33C + *NO sorbitol - 15 minutes
+35	29C +1M sorbitol to 33C + *NO sorbitol - 30 minutes
+36	constant 0.32 mM H2O2 (10 min) redo
+37	constant 0.32 mM H2O2 (20 min) redo
+38	constant 0.32 mM H2O2 (30 min) redo
+39	constant 0.32 mM H2O2 (40 min) rescan
+40	constant 0.32 mM H2O2 (50 min) redo
+41	constant 0.32 mM H2O2 (60 min) redo
+42	constant 0.32 mM H2O2 (80 min) redo
+43	constant 0.32 mM H2O2 (100 min) redo
+44	constant 0.32 mM H2O2 (120 min) redo
+45	constant 0.32 mM H2O2 (160 min) redo
+46	1 mM Menadione (10 min)redo
+47	1 mM Menadione (20 min) redo
+48	1 mM Menadione (30 min) redo
+49	1 mM Menadione (40 min) redo
+50	1 mM Menadione (50 min)redo
+51	1 mM Menadione (80 min) redo
+52	1 mM Menadione (105 min) redo
+53	1 mM Menadione (120 min)redo
+54	1 mM Menadione (160 min) redo
+55	2.5mM DTT 005 min dtt-1
+56	2.5mM DTT 015 min dtt-1
+57	2.5mM DTT 030 min dtt-1
+58	2.5mM DTT 045 min dtt-1
+59	2.5mM DTT 060 min dtt-1
+60	2.5mM DTT 090 min dtt-1
+61	2.5mM DTT 120 min dtt-1
+62	2.5mM DTT 180 min dtt-1
+63	dtt 000 min  dtt-2
+64	dtt 015 min dtt-2
+65	dtt 030 min  dtt-2
+66	dtt 060 min dtt-2
+67	dtt 120 min dtt-2
+68	dtt 240 min dtt-2
+69	dtt 480 min dtt-2
+70	1.5 mM diamide (5 min)
+71	1.5 mM diamide (10 min)
+72	1.5 mM diamide (20 min)
+73	1.5 mM diamide (30 min)
+74	1.5 mM diamide (40 min)
+75	1.5 mM diamide (50 min)
+76	1.5 mM diamide (60 min)
+77	1.5 mM diamide (90 min)
+78	1M sorbitol - 5 min
+79	1M sorbitol - 15 min
+80	1M sorbitol - 30 min
+81	1M sorbitol - 45 min 
+82	1M sorbitol - 60 min
+83	1M sorbitol - 90 min
+84	1M sorbitol - 120 min
+85	Hypo-osmotic shock - 5 min
+86	Hypo-osmotic shock - 15 min
+87	Hypo-osmotic shock - 30 min
+88	Hypo-osmotic shock - 45 min
+89	Hypo-osmotic shock - 60 min
+90	steady-state 1M sorbitol
+91	aa starv 0.5 h
+92	aa starv 1 h
+93	aa starv 2 h
+94	aa starv 4 h
+95	aa starv 6 h
+96	Nitrogen Depletion 30 min.
+97	Nitrogen Depletion 1 h
+98	Nitrogen Depletion 2 h
+99	Nitrogen Depletion 4 h
+100	Nitrogen Depletion 8 h
+101	Nitrogen Depletion 12 h
+102	Nitrogen Depletion 1 d
+103	Nitrogen Depletion 2 d
+104	Nitrogen Depletion 3 d
+105	Nitrogen Depletion 5 d
+106	Diauxic Shift Timecourse 0 h
+107	diauxic shift timecourse 9.5 h
+108	diauxic shift timecourse 11.5 h
+109	diauxic shift timecourse 13.5 h
+110	diauxic shift timecourse 15.5 h
+111	diauxic shift timecourse 18.5 h
+112	diauxic shift timecourse 20.5 h
+113	YPD 2 h ypd-2
+114	YPD 4 h ypd-2
+115	YPD 6 h ypd-2
+116	YPD 8 h ypd-2
+117	YPD 10 h  ypd-2
+118	YPD 12 h ypd-2
+119	YPD 1 d ypd-2
+120	YPD 2 d ypd-2
+121	YPD 3 d ypd-2
+122	YPD 5 d ypd-2
+123	YPD stationary phase 2 h ypd-1
+124	YPD stationary phase 4 h ypd-1
+125	YPD stationary phase 8 h ypd-1
+126	YPD stationary phase 12 h ypd-1
+127	YPD stationary phase 1 d ypd-1
+128	YPD stationary phase 2 d ypd-1
+129	YPD stationary phase 3 d ypd-1
+130	YPD stationary phase 5 d ypd-1
+131	YPD stationary phase 7 d ypd-1
+132	YPD stationary phase 13 d ypd-1
+133	YPD stationary phase 22 d ypd-1
+134	YPD stationary phase 28 d ypd-1
+135	DBY7286 37degree heat - 20 min
+136	DBYmsn2-4- 37degree heat - 20 min
+137	DBYmsn2/4 (real strain) + 37degrees (20 min)
+138	DBYyap1- 37degree heat - 20 min (redo)
+139	DBYyap1 + 37degree heat (repeat)
+140	DBY7286 + 0.3 mM H2O2 (20 min)
+141	DBYmsn2msn4 (good strain) + 0.32 mM H2O2
+142	DBYmsn2/4 (real strain) + 0.32 mM H2O2 (20 min)
+143	DBYyap1- + 0.3 mM H2O2 (20 min)
+144	DBYyap1 + 0.32 mM H2O2 (20 min)
+145	Msn2 overexpression (repeat)
+146	Msn4 overexpression
+147	YAP1 overexpression
+148	ethanol vs. reference pool car-1
+149	galactose vs. reference pool car-1
+150	glucose vs. reference pool car-1
+151	mannose vs. reference pool  car-1
+152	raffinose vs. reference pool car-1
+153	sucrose vs. reference pool car-1
+154	YP ethanol vs reference pool car-2
+155	YP fructose vs reference pool car-2
+156	YP galactose vs reference pool car-2
+157	YP glucose vs reference pool car-2
+158	YP mannose vs reference pool car-2
+159	YP raffinose vs reference pool car-2
+160	YP sucrose vs reference pool car-2
+161	17 deg growth ct-1
+162	21 deg growth ct-1
+163	25 deg growth ct-1
+164	29 deg growth ct-1
+165	37 deg growth ct-1
+166	steady state 15 dec C ct-2
+167	steady state 17 dec C ct-2
+168	steady state 21 dec C ct-2
+169	steady state 25 dec C ct-2
+170	steady state 29 dec C ct-2
+171	steady state 33 dec C ct-2
+172	steady state 36 dec C ct-2	R
+173	steady state 36 dec C ct-2 (repeat hyb)	R

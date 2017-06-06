@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related Work}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{DNN to predict TF binding}{section.2}% 3
+\BOOKMARK [1][-]{section.3}{Dataset and Pre-processing}{}% 4
+\BOOKMARK [1][-]{section.4}{Methodology}{}% 5
+\BOOKMARK [1][-]{section.5}{Results}{}% 6
+\BOOKMARK [2][-]{subsection.5.1}{Predicting gene expression with sequence features and regulator expression}{section.5}% 7
+\BOOKMARK [2][-]{subsection.5.2}{Inferring gene-regulatory element relationships}{section.5}% 8
+\BOOKMARK [2][-]{subsection.5.3}{Inferring regulator-sequence contacts}{section.5}% 9
+\BOOKMARK [1][-]{section.6}{Conclusion and Future Work}{}% 10
