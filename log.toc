@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Basset}{1}{section.1}
+\contentsline {section}{\numberline {2}Reducing CNN layers}{5}{section.2}
+\contentsline {section}{\numberline {3}Small filter}{6}{section.3}
+\contentsline {section}{\numberline {4}Single layer}{8}{section.4}
+\contentsline {subsection}{\numberline {4.1}Motif discovery}{12}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Maxpooling after single layer}{16}{subsection.4.2}
+\contentsline {section}{\numberline {5}LSTM}{17}{section.5}
+\contentsline {section}{\numberline {6}GRU}{19}{section.6}
+\contentsline {section}{\numberline {7}Gene-Gene relationship}{21}{section.7}
+\contentsline {section}{\numberline {8}deepLIFT}{21}{section.8}

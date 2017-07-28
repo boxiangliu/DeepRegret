@@ -78,6 +78,64 @@ Is the network find known motifs? I took top 100 sequences with largest activati
 \includegraphics[width=\textwidth]{../figures/single_layer/interpret/tomtom/stb3p.png}
 
 
+\subsection{Maxpooling after single layer}
+The best validation loss is 0.4233 which is worse than just tensor product network. 
+
+
+\section{LSTM}
+Using outer product network ignores the spatial information along the genome. An LSTM with temporal dimension set to the genomic coordinate should be able to incorporate additional information in theory. The network is as follows: 
+
+\includegraph{../figures/lstm/model/model.eps}
+
+This initial model uses an outer product as the input dimension and the genomic coordinate as the time dimension. The size of input dimension is 256*472=120832, too large to fit into memory of GeForce GTX 970. A simpler variant replaces the outer product dimension with concatenation, effective reducing the memory requirement by two orders of magnitude. 
+
+\includegraph{../figures/lstm/concat/model.eps}
+
+The concatenation model was trained with both SGD and ADAM. ADAM worked better than SGD. The best validation loss for LSTM is 0.3799, worse than 0.21 for tensor product network.
+
+
+\section{GRU}
+Since the GRU uses two gates, one gate less than LSTM, it is believed to be more computational efficient. I replaced the LSTM with GRU, and used maxpool = {15, 100, 491}. In theory, when we increase the subsample ratio to 982, the GRU should become equivalent to the concatenation network. 
+
+\includegraph{../figures/gru/concat/model.eps}
+
+
+\includegraph{../figures/gru/concat.pool.100/model.eps}
+
+
+\includegraph{../figures/gru/concat.pool.491/model.eps}
+
+Performance-wise, the best validation loss for GRU is 0.3556, worse than 0.21 for concatenation network. 
+
+
+\section{Gene-Gene relationship}
+
+\section{deepLIFT}
+I rerun the \textbf{concatenation} network with \textit{valid} padding (see \textit{modeling/concatnation}) and calculated deeplift scores with respect to the regulator layer. Each of the 472 regulators receives 1056511 scores, one for each [gene,conditions] pair (there are 173 conditions $\times$ 6107 genes). I used the sums of absolute values as the overall importance score for each regulator.
+
+
+\includegraph{../figures/concatenation/concat.class.deeplift/deeplift_sum_hist.pdf}
+
+The distribution is highly skewed to the right, indicating that several important (potentially master regulators) dominates the model weights. 
+
+The top 10 regulators are 
+\begin{enumerate}
+\item GAC1 / YOR178C 
+\item RAS1 / YOR101W 
+\item USV1 / YPL230W 
+\item MSN2 / YMR037C 
+\item PDR3 / YBL005W
+\item YVH1 / YIR026C
+\item PRR2 / YDL214C
+\item SLT2 / YHR030C
+\item BAS1 / YKR099W
+\item SIP2 / YGL208W 
+\end{enumerate}
+
+Within these, SIP2 / YGL208W, SLT2/YHR030C, USV1 / YPL230W, GAC1 / YOR178C, MSN2 / YMR037C are also noted in Kundaje (2006) as top parents.
+
+Since MSN2 is a known master regulator with over a hundred known targets, we tested whether MSN2 have higher deepLIFT scores for known targets. We downloaded a total of 381 genes from (http://www.yeastgenome.org/locus/S000004640/overview). Indeed, the known target has higher deepLIFT scores other genes (50.2 vs 49.9, p<0.0016). 
+
 
 
 

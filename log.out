@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{Basset}{}% 1
+\BOOKMARK [1][-]{section.2}{Reducing CNN layers}{}% 2
+\BOOKMARK [1][-]{section.3}{Small filter}{}% 3
+\BOOKMARK [1][-]{section.4}{Single layer}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Motif discovery}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Maxpooling after single layer}{section.4}% 6
+\BOOKMARK [1][-]{section.5}{LSTM}{}% 7
+\BOOKMARK [1][-]{section.6}{GRU}{}% 8
+\BOOKMARK [1][-]{section.7}{Gene-Gene relationship}{}% 9
+\BOOKMARK [1][-]{section.8}{deepLIFT}{}% 10

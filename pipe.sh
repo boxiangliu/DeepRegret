@@ -85,7 +85,42 @@ python modeling/keras1_small_filter/model.py
 python modeling/keras1_small_filter/interpret.py
 
 
-# Using a single conv layer and outer product: 
+# Using tensor product: 
 python modeling/single_layer/model.py
 python modeling/single_layer/model.reg.py --l1=1e-7 --l2=1e-7 --epochs=60
 python modeling/single_layer/model.reg.py --l1=1e-4 --l2=1e-4 --epochs=60
+python modeling/single_layer/interpret.py
+
+
+# Using maxpool after outer product layer:
+python modeling/maxpool_outer_product/model.py
+
+
+# Using LSTM:
+python modeling/lstm/model.py
+python modeling/lstm/model.concat.py
+python modeling/lstm/model.concat.adam.py
+
+
+# Using GRU:
+python modeling/gru/model.concat.py
+python modeling/gru/model.concat.pool.100.py
+python modeling/gru/model.concat.pool.491.py
+
+
+# For the CS329M paper: 
+python modeling/small_filter/model.simple.py
+python modeling/small_filter/model.simple.classification.py
+
+python modeling/single_layer/model.py
+python modeling/single_layer/model.classification.py
+
+python modeling/gru/model.concat.pool.100.py
+python modeling/gru/model.concat.pool.100.classification.py
+
+python modeling/single_layer/interpret.paper.py
+
+
+#------------ Concatenation network -------------# 
+python modeling/concatenation/concat.class.py
+python modeling/concatenation/concat.class.deeplift.py

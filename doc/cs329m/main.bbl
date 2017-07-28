@@ -1,0 +1,80 @@
+\begin{thebibliography}{10}
+
+\bibitem{Kato:2004is}
+Mamoru Kato, Naoya Hata, Nilanjana Banerjee, Bruce Futcher, and Michael~Q
+  Zhang.
+\newblock {Identifying combinatorial regulation of transcription factors and
+  binding motifs}.
+\newblock {\em Genome biology}, 5(8):R56, July 2004.
+
+\bibitem{Dobi:2007eo}
+Krista~C Dobi and Fred Winston.
+\newblock {Analysis of transcriptional activation at a distance in
+  Saccharomyces cerevisiae.}
+\newblock {\em Molecular and cellular biology}, 27(15):5575--5586, August 2007.
+
+\bibitem{Lee:2002jm}
+Tong~Ihn Lee, Nicola~J Rinaldi, Fran{\c c}ois Robert, Duncan~T Odom, Ziv
+  Bar-Joseph, Georg~K Gerber, Nancy~M Hannett, Christopher~T Harbison, Craig~M
+  Thompson, Itamar Simon, Julia Zeitlinger, Ezra~G Jennings, Heather~L Murray,
+  D~Benjamin Gordon, Bing Ren, John~J Wyrick, Jean-Bosco Tagne, Thomas~L
+  Volkert, Ernest Fraenkel, David~K Gifford, and Richard~A Young.
+\newblock {Transcriptional Regulatory Networks in Saccharomyces cerevisiae}.
+\newblock {\em Science}, 298(5594):799--804, October 2002.
+
+\bibitem{deBoer:2011ic}
+Carl~G de~Boer and Timothy~R Hughes.
+\newblock {YeTFaSCo: a database of evaluated yeast transcription factor
+  sequence specificities}.
+\newblock {\em Nucleic Acids Research}, 40(D1):gkr993--D179, November 2011.
+
+\bibitem{Middendorf:2004gta}
+Manuel Middendorf, Anshul Kundaje, Chris Wiggins, Yoav Freund, and Christina
+  Leslie.
+\newblock {Predicting genetic regulatory response using classification}.
+\newblock {\em Bioinformatics}, 20(suppl 1):i232--i240, August 2004.
+
+\bibitem{Ruan:2006hl}
+Jianhua Ruan and Weixiong Zhang.
+\newblock {A bi-dimensional regression tree approach to the modeling of gene
+  expression regulation.}
+\newblock {\em Bioinformatics}, 22(3):332--340, February 2006.
+
+\bibitem{Ruan:2005dd}
+Jianhua Ruan and Weixiong Zhang.
+\newblock {CAGER: classification analysis of gene expression regulation using
+  multiple information sources | BMC Bioinformatics | Full Text}.
+\newblock {\em BMC bioinformatics}, 6(1):114, 2005.
+
+\bibitem{Frohler:2007fy}
+Sebastian Fr{\"o}hler and Stefan Kramer.
+\newblock {Inductive logic programming for gene regulation prediction}.
+\newblock {\em Machine Learning}, 70(2-3):225--240, November 2007.
+
+\bibitem{Alipanahi:2015fb}
+Babak Alipanahi, Andrew Delong, Matthew~T Weirauch, and Brendan~J Frey.
+\newblock {Predicting the sequence specificities of DNA- and RNA-binding
+  proteins by deep learning.}
+\newblock {\em Nature Biotechnology}, 33(8):831--838, August 2015.
+
+\bibitem{Quang:2016jt}
+Daniel Quang and Xiaohui Xie.
+\newblock {DanQ: a hybrid convolutional and recurrent deep neural network for
+  quantifying the function of DNA sequences.}
+\newblock {\em Nucleic Acids Research}, 44(11):e107--e107, June 2016.
+
+\bibitem{Kelley:2016bv}
+David~R Kelley, Jasper Snoek, and John~L Rinn.
+\newblock {Basset: learning the regulatory code of the accessible genome with
+  deep convolutional neural networks.}
+\newblock {\em Genome research}, 26(7):990--999, July 2016.
+
+\bibitem{Kundaje:2007hs}
+Anshul Kundaje, Steve Lianoglou, Xuejing Li, David Quigley, Marta Arias,
+  Chris~H Wiggins, Li~Zhang, and Christina Leslie.
+\newblock {Learning regulatory programs that accurately predict differential
+  expression with MEDUSA.}
+\newblock {\em Annals of the New York Academy of Sciences}, 1115(1):178--202,
+  December 2007.
+
+\end{thebibliography}

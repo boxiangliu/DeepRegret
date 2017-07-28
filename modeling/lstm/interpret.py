@@ -15,8 +15,8 @@ import matplotlib.pyplot as plt
 def get_seq_data(seq_file='../data/yeast_promoters.txt'):
 	promoters = pd.read_table(seq_file, names=["UID", "sequence"])
 	promoters.loc[:, "one_hot_sequence"] = [one_hot(seq) for seq in promoters.loc[:, "sequence"]]
-	one_hot=np.reshape(np.vstack(promoters['one_hot_sequence']),[-1,4,1000,1])
-	return promoters,one_hot
+	seq=np.reshape(np.vstack(promoters['one_hot_sequence']),[-1,4,1000,1])
+	return promoters,seq
 
 def output_fasta(convolution2d_1_act,seq_data,promoters,threshold,filters_dir):
 	if not os.path.exists(filters_dir): os.makedirs(filters_dir)
@@ -108,10 +108,10 @@ model2=Model(input=[seq_input],output=[inter_output])
 
 
 # Obtain activation of the first conv layer:
-promoters,one_hot=get_seq_data()
-convolution2d_1_act=model2.predict({'seq_input':one_hot},batch_size=100,verbose=1)
+promoters,seq_data=get_seq_data()
+convolution2d_1_act=model2.predict({'seq_input':seq_data},batch_size=100,verbose=1)
 
 
-# Get the top 100 sequences with the largest activation:
+# Get the sequences that activates more than 50% of maximum
 # value of each filter:
-output_pwm_by_topN(convolution2d_1_act, one_hot, promoters, 100, '%s/filter_top_100.pwm'%(pwm_dir))
+output_pwm_by_topN(convolution2d_1_act, seq_data, promoters, 100, '%s/filter_top_100.pwm'%(pwm_dir))

@@ -2,12 +2,14 @@ from keras.models import Model
 from keras.layers import Input, Dense, Convolution2D, Flatten, Dropout, Merge, Activation, MaxPooling2D, Reshape
 from keras.optimizers import Adam, SGD, RMSprop
 from keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
+from keras.utils.np_utils import to_categorical
 from keras.utils.visualize_util import plot
 
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt
 
+from sklearn.metrics import confusion_matrix
 import pickle
 import numpy as np
 import sys,os
@@ -18,7 +20,7 @@ from callbacks import BatchHistory
 
 num_reg=472
 seq_length=1000
-dir_suffix='single_layer/model/'
+dir_suffix='single_layer/model.classification/'
 fig_dir='../figures/%s'%(dir_suffix)
 log_dir='../logs/%s'%(dir_suffix)
 out_dir='../processed_data/%s'%(dir_suffix)
@@ -51,12 +53,14 @@ x=Dense(units,activation='relu')(x)
 x=Dropout(0.5,seed=42)(x)
 x=Dense(units,activation='relu')(x)
 x=Dropout(0.5,seed=42)(x)
-rgs_output=Dense(1,activation='linear',name='rgs_output')(x)
+cls_output=Dense(3,activation='sigmoid',name='cls_output')(x)
 
 
-model=Model(input=[reg_input,seq_input],output=[rgs_output])
-model.compile(loss={'rgs_output':'mean_squared_error'},optimizer='sgd')
+
+model=Model(input=[reg_input,seq_input],output=[cls_output])
+model.compile(loss={'cls_output':'categorical_crossentropy'},optimizer='sgd',metric='accuracy')
 plot(model, show_shapes=True,to_file='%s/model.eps'%(fig_dir))
+
 print('INFO - %s'%('loading data.'))
 train,val,test=input_data.read_data_sets(train_pct=80,val_pct=10,test_pct=10)
 
@@ -65,22 +69,24 @@ print('INFO - %s'%('training model.'))
 reduce_lr=ReduceLROnPlateau(verbose=1,factor=0.5, patience=5)
 early_stopping=EarlyStopping(monitor='val_loss',patience=10)
 checkpoint=ModelCheckpoint(filepath="%s/model.{epoch:02d}-{val_loss:.4f}.hdf5"%(log_dir), monitor='val_loss')
-batchhistory=BatchHistory(val_data=val,loss_function='mse',every_n_batch=1000)
-history=model.fit({'seq_input':train['seq'],'reg_input':train['reg']},{'rgs_output':train['expr']},
-	validation_data=({'seq_input':val['seq'],'reg_input':val['reg']},{'rgs_output':val['expr']}),
+history=model.fit({'seq_input':train['seq'],'reg_input':train['reg']},{'cls_output':to_categorical(train['class'])},
+	validation_data=({'seq_input':val['seq'],'reg_input':val['reg']},{'cls_output':to_categorical(val['class'])}),
 	nb_epoch=100,
 	batch_size=100,
-	callbacks=[early_stopping,checkpoint,batchhistory,reduce_lr],
+	callbacks=[early_stopping,checkpoint,reduce_lr],
 	verbose=1)
 with open('%s/history.pkl'%(log_dir),'wb') as f:
-	pickle.dump([history.history,batchhistory.val_loss],f)
-
+	pickle.dump(history.history,f)
 
 
 pred=model.predict({'seq_input':test['seq'],'reg_input':test['reg']},batch_size=100,verbose=1)
-plt.scatter(pred,test['expr'])
-plt.savefig("%s/pred_vs_obs.png"%(fig_dir))
-output=np.column_stack((test['expr'], pred[:,0]))
+pred_class=pred.argmax(axis=1)
+
+cm=confusion_matrix(test['class'], pred_class)
+np.savetxt('%s/confusion_matrix.txt'%(out_dir),cm,fmt='%i',delimiter='\t')
+np.savetxt('%s/confusion_matrix_pct.txt'%(out_dir),cm/float(cm.sum())*100,fmt='%.10f',delimiter='\t')
+
+output=np.column_stack((test['class'], pred_class))
 np.savetxt("%s/prediction.txt"%(out_dir), output,delimiter='\t')
 
 
