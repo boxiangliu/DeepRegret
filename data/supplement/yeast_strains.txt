@@ -1,0 +1,8 @@
+Name	Genotype	Source
+DBY7286	MAT a ura3-52 GAL2	Ferea et al., 1999
+DBY8768	ura3-52/ura3-52 GAL2/GAL2	Ferea et al., 1999
+DBY9434	MAT a ura3-52 yap1::KANMX4 GAL2	This study
+DBY9435	MAT a msn2::KANMX4 msn4::URA3 GAL2	DeRisi
+DBY9439	DBY7286 harboring pRS416	Tae Bum Shin
+DBY9440	DBY7286 harboring pTS1	Tae Bum Shin
+DBY9441	DBY7286 harboring pTS2	Tae Bum Shin

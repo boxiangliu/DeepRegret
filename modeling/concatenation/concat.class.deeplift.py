@@ -12,12 +12,15 @@ from sklearn.metrics import log_loss
 import deeplift
 from deeplift.conversion import keras_conversion as kc
 from deeplift.blobs import NonlinearMxtsMode
+from deeplift.visualization import viz_sequence
 import os
 
 from sklearn.cluster.bicluster import SpectralBiclustering
 from sklearn.metrics import consensus_score
 from scipy.stats import ranksums
 from scipy.stats import ttest_ind
+
+from collections import OrderedDict
 
 # Load model:
 model_fn='../logs/concatenation/classification/model.32-0.5284.hdf5'
@@ -107,3 +110,56 @@ z=[not i for i in y]
 ttest_ind(msn2_downstream_colsum[y],msn2_downstream_colsum[z])
 # Ttest_indResult(statistic=3.1641265733701611, pvalue=0.0015631278619146669)
 
+
+
+#---------- sequence layer -----------#
+# deeplift_model.get_name_to_blob().keys() 
+#Specify the index of the layer to compute the importance scores of.
+find_scores_layer_name = 'seq_input'
+
+#Compile the function that computes the contribution scores
+deeplift_contribs_func = deeplift_model.get_target_contribs_func(find_scores_layer_name=find_scores_layer_name,
+	pre_activation_target_layer_name='preact_cls_output')
+
+#Compute scores on inputs
+X=[full_data['reg'],full_data['seq']]
+background = OrderedDict([('A', 0.31), ('C', 0.19), ('G', 0.19), ('T', 0.31)])
+scores = np.array(deeplift_contribs_func(task_idx=0,
+	input_data_list=X,
+	batch_size=100,
+	input_references_list=[np.array([0])[None,:],np.array([background['A'],background['C'],background['G'],background['T']])[None,:,None,None]],
+	progress_update=1000))
+
+out_dir='../processed_data/concatenation/concat.class.deeplift/'
+if not os.path.exists(out_dir): os.makedirs(out_dir)
+np.save('%s/seq_deeplift.npy'%out_dir,scores)
+scores=np.load('%s/seq_deeplift.npy'%out_dir)
+scores=np.squeeze(np.sum(scores, axis=1),axis=2)
+
+idx=232421
+scores_for_idx=scores[idx]
+original_onehot = full_data['seq'][idx]
+scores_for_idx=original_onehot*scores_for_idx[None,:,None]
+viz_sequence.plot_weights(scores_for_idx, subticks_frequency=100)
+plt.savefig('%s/deeplift_seq_232421.pdf'%fig_dir)
+
+
+#Compute scores on inputs
+X=[full_data['reg'],full_data['seq']]
+scores = np.array(deeplift_contribs_func(task_idx=0,
+	input_data_list=X,
+	batch_size=100,
+	progress_update=1000))
+
+out_dir='../processed_data/concatenation/concat.class.deeplift/'
+if not os.path.exists(out_dir): os.makedirs(out_dir)
+np.save('%s/seq_deeplift.ref-0.0.npy'%out_dir,scores)
+scores=np.squeeze(np.sum(scores, axis=1),axis=2)
+
+idx=232421
+scores_for_idx=scores[idx]
+original_onehot = full_data['seq'][idx]
+scores_for_idx=original_onehot*scores_for_idx[None,:,None]
+plt.ion()
+viz_sequence.plot_weights(scores_for_idx, subticks_frequency=100)
+plt.savefig('%s/deeplift_seq_232421.ref-0.0.pdf'%fig_dir)

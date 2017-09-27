@@ -8,7 +8,7 @@ import pickle
 
 # One hot encoding:
 def one_hot(seq):
-	encoded_seq = np.zeros((4, len(seq)),dtype=np.int8)
+	encoded_seq = np.zeros((4, len(seq)),dtype=np.float32)
 	for pos in range(len(seq)):
 		nt = seq[pos]
 		if nt == "A":
@@ -19,22 +19,65 @@ def one_hot(seq):
 			encoded_seq[2, pos] = 1
 		if nt == "T":
 			encoded_seq[3, pos] = 1
+		if nt == 'N':
+			encoded_seq[:, pos] = [0.31,0.19,0.19,0.31]
 	return encoded_seq
 
 # ratios is a 3-tuple or 3-list that gives training:val:test
-def partition(data, ratios):
+def partition(data, ratios, mode='random'):
+
+	assert mode in ['random','whole_gene','whole_experiment'], \
+		'mode must be one of "random", "whole_gene", and "whole experiment"'
 	ratio_tvt = np.array(ratios)
 	pct_tvt = ratio_tvt/float(sum(ratio_tvt))
 
-	partition_vec = np.zeros(len(data))
-	partition_vec[int(len(data)*pct_tvt[:1]):] = 1
-	partition_vec[int(len(data)*pct_tvt[:2].sum()):] = 2
-	
-	random.seed(42)
-	random.shuffle(partition_vec)
-	
-	return [data[partition_vec==i] for i in range(3)]
+	if mode == 'random':
 
+		partition_vec = np.zeros(len(data))
+		partition_vec[int(len(data)*pct_tvt[:1]):] = 1
+		partition_vec[int(len(data)*pct_tvt[:2].sum()):] = 2
+		
+		random.seed(42)
+		random.shuffle(partition_vec)
+		
+		split=[data[partition_vec==i] for i in range(3)]
+
+	elif mode=='whole_gene':
+		uid=data['UID'].unique()
+
+		partition_vec = np.zeros(len(uid))
+		partition_vec[int(len(uid)*pct_tvt[:1]):] = 1
+		partition_vec[int(len(uid)*pct_tvt[:2].sum()):] = 2
+
+		split=[]
+		for i in range(3):
+			idx=data['UID'].isin(uid[partition_vec==i])
+			split.append(data[idx])
+
+		assert all(~split[0]['UID'].isin(split[1]['UID'])) and \
+			all(~split[0]['UID'].isin(split[2]['UID'])) and \
+			all(~split[1]['UID'].isin(split[2]['UID'])), \
+			'whole-gene hold out not correct!'
+		
+
+	else:
+		experiment=data['experiment'].unique()
+
+		partition_vec = np.zeros(len(experiment))
+		partition_vec[int(len(experiment)*pct_tvt[:1]):] = 1
+		partition_vec[int(len(experiment)*pct_tvt[:2].sum()):] = 2
+
+		split=[]
+		for i in range(3):
+			idx=data['experiment'].isin(experiment[partition_vec==i])
+			split.append(data[idx])
+
+		assert all(~split[0]['experiment'].isin(split[1]['experiment'])) and \
+			all(~split[0]['experiment'].isin(split[2]['experiment'])) and \
+			all(~split[1]['experiment'].isin(split[2]['experiment'])), \
+			'whole-experiment hold out not correct!'
+		
+	return(split)
 
 def discretize(x):
 	'''Discretize x. Values less than -1.3 will be 0. 
@@ -66,7 +109,7 @@ def reformat(data):
 # expr_file='../data/complete_dataset.txt'
 # reg_names_file='../data/reg_names_R.txt'
 
-def read_data_sets(train_pct=80,val_pct=10,test_pct=10,seq_file='../data/yeast_promoters.txt',expr_file='../data/complete_dataset.txt',reg_names_file='../data/reg_names_R.txt'):
+def read_data_sets(train_pct=80,val_pct=10,test_pct=10,mode='random',seq_file='../data/yeast_promoters.txt',expr_file='../data/complete_dataset.txt',reg_names_file='../data/reg_names_R.txt'):
 	'''Read data from text files into numpy arrays
 		Args:
 		seq_file: promoter sequence file.
@@ -85,6 +128,7 @@ def read_data_sets(train_pct=80,val_pct=10,test_pct=10,seq_file='../data/yeast_p
 	expr_data[expr_data.columns[2:]]=expr_data[expr_data.columns[2:]].astype('float32')
 	promoters = pd.read_table(seq_file, names=["UID", "sequence"])
 
+
 	# Some transformation: 
 	target_expr_data = pd.melt(expr_data, id_vars=["UID","NAME"], var_name="experiment", value_name="expression")
 	promoters.loc[:, "one_hot_sequence"] = [one_hot(seq) for seq in promoters.loc[:, "sequence"]]
@@ -97,11 +141,13 @@ def read_data_sets(train_pct=80,val_pct=10,test_pct=10,seq_file='../data/yeast_p
 		reg = reg.append(pd.DataFrame({"experiment": reg_data.columns[col], "reg_exp": [data]}))
 
 	data_complete = pd.merge(promoters, target_expr_data, on="UID", how="inner").merge(reg, on="experiment", how="inner")
+
+
 	# train_pct=80
 	# val_pct=10
 	# test_pct=10
-
-	train, val, test = partition(data_complete, (train_pct,val_pct,test_pct))
+	# mode = 'random'
+	train, val, test = partition(data_complete, (train_pct,val_pct,test_pct), mode=mode)
 
 	train_data=reformat(train) if train_pct > 0 else []
 	val_data=reformat(val) if val_pct > 0 else []

@@ -137,6 +137,58 @@ Within these, SIP2 / YGL208W, SLT2/YHR030C, USV1 / YPL230W, GAC1 / YOR178C, MSN2
 Since MSN2 is a known master regulator with over a hundred known targets, we tested whether MSN2 have higher deepLIFT scores for known targets. We downloaded a total of 381 genes from (http://www.yeastgenome.org/locus/S000004640/overview). Indeed, the known target has higher deepLIFT scores other genes (50.2 vs 49.9, p<0.0016). 
 
 
+I also tried running deepLIFT on the regression model. When running w.r.t the regulator layer with background nucleotide frequency as the reference, the following are the top 10 genes with highest cumulative deepLIFT scores: 
+# YDR277C     6.0 MTH1 / YDR277C
+# YGL096W     2.0 TOS8 / YGL096W
+# YGL099W     7.0 LSG1 / YGL099W
+# YGR123C     3.0 PPT1 / YGR123C
+# YHR136C    10.0 SPL2 / YHR136C
+# YIR026C     4.0 YVH1 / YIR026C
+# YKL109W     1.0 HAP4 / YKL109W
+# YLR452C     9.0 SST2 / YLR452C
+# YOR101W     8.0 RAS1 / YOR101W
+# YPL230W     5.0 USV1 / YPL230W
+Of these, MTH1, PPT1, YVH1, HAP4, USV1 are also in Kundaje 2006. 
+For MSN2, I compared its score between known targets and non-targets, the p-value is 0.00046!
 
+
+I tried calculating deepLIFT score for the seq layer using genomics default and gradient*input. This did not work very well. Below is an example 
+
+genomics default:
+
+\includegraph{../figures/concatenation/concat.regress.deeplift/deeplift_seq_0.pdf}
+
+grad time input:
+
+\includegraph{../figures/concatenation/concat.regress.deeplift/deeplift_seq_grad-times-inp.743129.jpg}
+
+
+
+
+Later, I tried summing over the gradient*input over all 173 experiments. 
+
+
+\includegraph{../figures/concatenation/concat.regress.deeplift/deeplift_seq_sum-173-exp.4281.jpg}
+
+
+This seems to have worked. We can observe patches of + and - scores. However, when I summed over all experiments and genes.
+
+\includegraph{../figures/concatenation/concat.regress.deeplift/deeplift_seq_sum-173-exp-6107-genes.pdf}
+
+It seems the negative and positive patches are systematic! 
+
+\section{Whole-gene and whole-experiment holdout}
+They don't perform very well. The validation MSE of whole-experiment holdout is around 0.3, and that of whole-gene holdout is around 0.5. These are bad compared with 0.2 for random holdout.
+
+\section{Improving model accuracy}
+In the deep learning book, Ian give the following guidelines
+
+First, performance metric is chosen along with the desired values. In the Street View project, he chose coverage >= 95\%. 
+
+Second, a baseline model is established. For his project, a convolutional neural network with ReLU were used. 
+
+Third, the baseline model is iteratively refined. One test whether each change makes an improvement. 
+
+Fourth, compare the train and test error. If the train and test error are similar, the model is underfitting or something is wrong with the training data. Consider using a more expressive model. If that does not work, look at the worst errors because something might be wrong with the training data. If the training error is lower than the test error, that indicates overfitting and regularization can be added. 
 
 \end{document}

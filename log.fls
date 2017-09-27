@@ -230,6 +230,14 @@ INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT ../figures/concatenation/concat.class.deeplift/deeplift_sum_hist.pdf
 INPUT ../figures/concatenation/concat.class.deeplift/deeplift_sum_hist.pdf
 INPUT ../figures/concatenation/concat.class.deeplift/deeplift_sum_hist.pdf
+INPUT ../figures/concatenation/concat.regress.deeplift/deeplift_seq_0.pdf
+INPUT ../figures/concatenation/concat.regress.deeplift/deeplift_seq_0.pdf
+INPUT ../figures/concatenation/concat.regress.deeplift/deeplift_seq_0.pdf
+INPUT ../figures/concatenation/concat.regress.deeplift/deeplift_seq_grad-times-inp.743129.jpg
+INPUT ../figures/concatenation/concat.regress.deeplift/deeplift_seq_sum-173-exp.4281.jpg
+INPUT ../figures/concatenation/concat.regress.deeplift/deeplift_seq_sum-173-exp-6107-genes.pdf
+INPUT ../figures/concatenation/concat.regress.deeplift/deeplift_seq_sum-173-exp-6107-genes.pdf
+INPUT ../figures/concatenation/concat.regress.deeplift/deeplift_seq_sum-173-exp-6107-genes.pdf
 INPUT log.aux
 INPUT ./log.out
 INPUT ./log.out

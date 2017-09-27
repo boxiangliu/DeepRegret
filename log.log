@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  27 JUL 2017 18:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  4 AUG 2017 09:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -591,7 +591,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \openout4 = `log.toc'.
 
 
-<modeling/basset/architecture.png, id=54, 242.9075pt x 480.79625pt>
+<modeling/basset/architecture.png, id=59, 242.9075pt x 480.79625pt>
 File: modeling/basset/architecture.png Graphic file (type png)
 
 <use modeling/basset/architecture.png>
@@ -603,18 +603,18 @@ Package pdftex.def Info: modeling/basset/architecture.png used on input line 19
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <./m
 odeling/basset/architecture.png>]
 Package epstopdf Info: Source file: <../figures/basset/model.eps>
-(epstopdf)                    date: 2017-06-03 15:09:45
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 39798 bytes
 (epstopdf)             Output file: <../figures/basset/model-eps-converted-to.p
 df>
-(epstopdf)                    date: 2017-06-05 01:45:59
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 12798 bytes
 (epstopdf)             Command: <repstopdf --outfile=../figures/basset/model-ep
 s-converted-to.pdf ../figures/basset/model.eps>
 (epstopdf)             \includegraphics on input line 23.
 Package epstopdf Info: Output file is already uptodate.
 
-<../figures/basset/model-eps-converted-to.pdf, id=72, 737.75626pt x 1710.39pt>
+<../figures/basset/model-eps-converted-to.pdf, id=77, 737.75626pt x 1710.39pt>
 File: ../figures/basset/model-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ../figures/basset/model-eps-converted-to.pdf>
@@ -623,18 +623,18 @@ nput line 23.
 (pdftex.def)             Requested size: 237.23506pt x 549.99803pt.
  [3] [4 <../figures/basset/model-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../figures/keras1/model.eps>
-(epstopdf)                    date: 2017-06-03 13:38:48
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 21488 bytes
 (epstopdf)             Output file: <../figures/keras1/model-eps-converted-to.p
 df>
-(epstopdf)                    date: 2017-06-05 01:58:20
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 9628 bytes
 (epstopdf)             Command: <repstopdf --outfile=../figures/keras1/model-ep
 s-converted-to.pdf ../figures/keras1/model.eps>
 (epstopdf)             \includegraphics on input line 31.
 Package epstopdf Info: Output file is already uptodate.
 
-<../figures/keras1/model-eps-converted-to.pdf, id=86, 669.50125pt x 753.81625pt
+<../figures/keras1/model-eps-converted-to.pdf, id=91, 669.50125pt x 753.81625pt
 >
 File: ../figures/keras1/model-eps-converted-to.pdf Graphic file (type pdf)
  <use ../figures/keras1/model-eps-converted-to.pdf>
@@ -646,7 +646,7 @@ Overfull \hbox (15.00642pt too wide) in paragraph at lines 31--32
 [][] 
  []
 
-<../figures/keras1/pred_vs_obs.png, id=87, 462.528pt x 346.896pt>
+<../figures/keras1/pred_vs_obs.png, id=92, 462.528pt x 346.896pt>
 File: ../figures/keras1/pred_vs_obs.png Graphic file (type png)
 
 <use ../figures/keras1/pred_vs_obs.png>
@@ -660,19 +660,19 @@ Overfull \hbox (15.0178pt too wide) in paragraph at lines 35--36
 
 [5 <../figures/keras1/model-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../figures/small_filter/model.eps>
-(epstopdf)                    date: 2017-06-03 16:56:16
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 27053 bytes
 (epstopdf)             Output file: <../figures/small_filter/model-eps-converte
 d-to.pdf>
-(epstopdf)                    date: 2017-06-05 01:58:21
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 10778 bytes
 (epstopdf)             Command: <repstopdf --outfile=../figures/small_filter/mo
 del-eps-converted-to.pdf ../figures/small_filter/model.eps>
 (epstopdf)             \includegraphics on input line 44.
 Package epstopdf Info: Output file is already uptodate.
 
-<../figures/small_filter/model-eps-converted-to.pdf, id=97, 694.595pt x 1102.11
-75pt>
+<../figures/small_filter/model-eps-converted-to.pdf, id=102, 694.595pt x 1102.1
+175pt>
 File: ../figures/small_filter/model-eps-converted-to.pdf Graphic file (type pdf
 )
  <use ../figures/small_filter/model-eps-converted-to.pdf>
@@ -685,7 +685,7 @@ Overfull \hbox (15.00734pt too wide) in paragraph at lines 44--45
  []
 
 [6 <../figures/keras1/pred_vs_obs.png>]
-<../figures/small_filter/pred_vs_obs.png, id=103, 462.528pt x 346.896pt>
+<../figures/small_filter/pred_vs_obs.png, id=108, 462.528pt x 346.896pt>
 [7 <../figures/small_filter/model-eps-converted-to.pdf>]
 File: ../figures/small_filter/pred_vs_obs.png Graphic file (type png)
 
@@ -699,18 +699,18 @@ Overfull \hbox (15.0178pt too wide) in paragraph at lines 48--49
  []
 
 Package epstopdf Info: Source file: <../figures/single_layer/model.eps>
-(epstopdf)                    date: 2017-06-06 12:35:37
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 24391 bytes
 (epstopdf)             Output file: <../figures/single_layer/model-eps-converte
 d-to.pdf>
-(epstopdf)                    date: 2017-06-07 18:14:57
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 10486 bytes
 (epstopdf)             Command: <repstopdf --outfile=../figures/single_layer/mo
 del-eps-converted-to.pdf ../figures/single_layer/model.eps>
 (epstopdf)             \includegraphics on input line 54.
 Package epstopdf Info: Output file is already uptodate.
 
-<../figures/single_layer/model-eps-converted-to.pdf, id=114, 660.4675pt x 1102.
+<../figures/single_layer/model-eps-converted-to.pdf, id=119, 660.4675pt x 1102.
 1175pt>
 File: ../figures/single_layer/model-eps-converted-to.pdf Graphic file (type pdf
 )
@@ -720,7 +720,7 @@ d on input line 54.
 (pdftex.def)             Requested size: 329.60811pt x 550.01474pt.
  [8 <../figures/small_filter/pred_vs_obs.png>] [9 <../figures/single_layer/mode
 l-eps-converted-to.pdf>]
-<../figures/single_layer/pred_vs_obs.png, id=130, 462.528pt x 346.896pt>
+<../figures/single_layer/pred_vs_obs.png, id=135, 462.528pt x 346.896pt>
 File: ../figures/single_layer/pred_vs_obs.png Graphic file (type png)
 
 <use ../figures/single_layer/pred_vs_obs.png>
@@ -728,7 +728,7 @@ Package pdftex.def Info: ../figures/single_layer/pred_vs_obs.png used on input
 line 59.
 (pdftex.def)             Requested size: 345.0178pt x 258.76335pt.
 
-<../figures/single_layer/loss_vs_epoch.png, id=131, 968.61874pt x 930.47626pt>
+<../figures/single_layer/loss_vs_epoch.png, id=136, 968.61874pt x 930.47626pt>
 File: ../figures/single_layer/loss_vs_epoch.png Graphic file (type png)
 
 <use ../figures/single_layer/loss_vs_epoch.png>
@@ -742,7 +742,7 @@ Overfull \hbox (15.0178pt too wide) in paragraph at lines 59--61
 
 [10 <../figures/single_layer/pred_vs_obs.png>]
 <../figures/single_layer/20170605_092542_l1_1e-07_l2_1e-07/loss_vs_epoch.png, i
-d=137, 721.69624pt x 681.54625pt>
+d=142, 721.69624pt x 681.54625pt>
 File: ../figures/single_layer/20170605_092542_l1_1e-07_l2_1e-07/loss_vs_epoch.p
 ng Graphic file (type png)
 
@@ -757,7 +757,7 @@ Overfull \hbox (15.0007pt too wide) in paragraph at lines 64--65
  []
 
 [11 <../figures/single_layer/loss_vs_epoch.png>]
-<../figures/single_layer/interpret/tomtom/dot6p_2.png, id=143, 625.1355pt x 426
+<../figures/single_layer/interpret/tomtom/dot6p_2.png, id=148, 625.1355pt x 426
 .393pt>
 File: ../figures/single_layer/interpret/tomtom/dot6p_2.png Graphic file (type p
 ng)
@@ -766,7 +766,7 @@ Package pdftex.def Info: ../figures/single_layer/interpret/tomtom/dot6p_2.png u
 sed on input line 71.
 (pdftex.def)             Requested size: 345.0pt x 235.31714pt.
 
-<../figures/single_layer/interpret/tomtom/dot6p_3.png, id=144, 596.9502pt x 426
+<../figures/single_layer/interpret/tomtom/dot6p_3.png, id=149, 596.9502pt x 426
 .393pt>
 File: ../figures/single_layer/interpret/tomtom/dot6p_3.png Graphic file (type p
 ng)
@@ -775,7 +775,7 @@ Package pdftex.def Info: ../figures/single_layer/interpret/tomtom/dot6p_3.png u
 sed on input line 72.
 (pdftex.def)             Requested size: 345.0pt x 246.42976pt.
 
-<../figures/single_layer/interpret/tomtom/dot6p.png, id=145, 596.9502pt x 426.3
+<../figures/single_layer/interpret/tomtom/dot6p.png, id=150, 596.9502pt x 426.3
 93pt>
 File: ../figures/single_layer/interpret/tomtom/dot6p.png Graphic file (type png
 )
@@ -784,7 +784,7 @@ Package pdftex.def Info: ../figures/single_layer/interpret/tomtom/dot6p.png use
 d on input line 73.
 (pdftex.def)             Requested size: 345.0pt x 246.42976pt.
 
-<../figures/single_layer/interpret/tomtom/nrg1p.png, id=146, 596.9502pt x 426.3
+<../figures/single_layer/interpret/tomtom/nrg1p.png, id=151, 596.9502pt x 426.3
 93pt>
 File: ../figures/single_layer/interpret/tomtom/nrg1p.png Graphic file (type png
 )
@@ -793,7 +793,7 @@ Package pdftex.def Info: ../figures/single_layer/interpret/tomtom/nrg1p.png use
 d on input line 74.
 (pdftex.def)             Requested size: 345.0pt x 246.42976pt.
 
-<../figures/single_layer/interpret/tomtom/rpn4p.png, id=147, 596.9502pt x 426.3
+<../figures/single_layer/interpret/tomtom/rpn4p.png, id=152, 596.9502pt x 426.3
 93pt>
 File: ../figures/single_layer/interpret/tomtom/rpn4p.png Graphic file (type png
 )
@@ -802,7 +802,7 @@ Package pdftex.def Info: ../figures/single_layer/interpret/tomtom/rpn4p.png use
 d on input line 75.
 (pdftex.def)             Requested size: 345.0pt x 246.42976pt.
 
-<../figures/single_layer/interpret/tomtom/sfp1p_2.png, id=148, 710.4141pt x 426
+<../figures/single_layer/interpret/tomtom/sfp1p_2.png, id=153, 710.4141pt x 426
 .393pt>
 File: ../figures/single_layer/interpret/tomtom/sfp1p_2.png Graphic file (type p
 ng)
@@ -811,7 +811,7 @@ Package pdftex.def Info: ../figures/single_layer/interpret/tomtom/sfp1p_2.png u
 sed on input line 76.
 (pdftex.def)             Requested size: 345.0pt x 207.06711pt.
 
-<../figures/single_layer/interpret/tomtom/sfp1p.png, id=149, 682.2288pt x 426.3
+<../figures/single_layer/interpret/tomtom/sfp1p.png, id=154, 682.2288pt x 426.3
 93pt>
 File: ../figures/single_layer/interpret/tomtom/sfp1p.png Graphic file (type png
 )
@@ -820,7 +820,7 @@ Package pdftex.def Info: ../figures/single_layer/interpret/tomtom/sfp1p.png use
 d on input line 77.
 (pdftex.def)             Requested size: 345.0pt x 215.62279pt.
 
-<../figures/single_layer/interpret/tomtom/stb3p.png, id=150, 653.3208pt x 426.3
+<../figures/single_layer/interpret/tomtom/stb3p.png, id=155, 653.3208pt x 426.3
 93pt>
 File: ../figures/single_layer/interpret/tomtom/stb3p.png Graphic file (type png
 )
@@ -841,18 +841,18 @@ tomtom/dot6p.png> <../figures/single_layer/interpret/tomtom/nrg1p.png>]
 er/interpret/tomtom/sfp1p_2.png>] [16 <../figures/single_layer/interpret/tomtom
 /sfp1p.png> <../figures/single_layer/interpret/tomtom/stb3p.png>]
 Package epstopdf Info: Source file: <../figures/lstm/model/model.eps>
-(epstopdf)                    date: 2017-06-06 20:17:24
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 21594 bytes
 (epstopdf)             Output file: <../figures/lstm/model/model-eps-converted-
 to.pdf>
-(epstopdf)                    date: 2017-06-07 18:15:00
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 10819 bytes
 (epstopdf)             Command: <repstopdf --outfile=../figures/lstm/model/mode
 l-eps-converted-to.pdf ../figures/lstm/model/model.eps>
 (epstopdf)             \includegraphics on input line 88.
 Package epstopdf Info: Output file is already uptodate.
 
-<../figures/lstm/model/model-eps-converted-to.pdf, id=182, 670.505pt x 928.4687
+<../figures/lstm/model/model-eps-converted-to.pdf, id=187, 670.505pt x 928.4687
 5pt>
 File: ../figures/lstm/model/model-eps-converted-to.pdf Graphic file (type pdf)
  <use ../figures/lstm/model/model-eps-converted-to.pdf>
@@ -866,18 +866,18 @@ Overfull \hbox (14.99165pt too wide) in paragraph at lines 88--89
 
 [17 <../figures/lstm/model/model-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../figures/lstm/concat/model.eps>
-(epstopdf)                    date: 2017-06-07 08:40:19
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 20194 bytes
 (epstopdf)             Output file: <../figures/lstm/concat/model-eps-converted
 -to.pdf>
-(epstopdf)                    date: 2017-06-07 18:15:01
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 10613 bytes
 (epstopdf)             Command: <repstopdf --outfile=../figures/lstm/concat/mod
 el-eps-converted-to.pdf ../figures/lstm/concat/model.eps>
 (epstopdf)             \includegraphics on input line 92.
 Package epstopdf Info: Output file is already uptodate.
 
-<../figures/lstm/concat/model-eps-converted-to.pdf, id=192, 716.6775pt x 841.14
+<../figures/lstm/concat/model-eps-converted-to.pdf, id=197, 716.6775pt x 841.14
 25pt>
 File: ../figures/lstm/concat/model-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -892,18 +892,18 @@ Overfull \hbox (15.00737pt too wide) in paragraph at lines 92--93
 
 [18 <../figures/lstm/concat/model-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../figures/gru/concat/model.eps>
-(epstopdf)                    date: 2017-06-07 17:54:57
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 20180 bytes
 (epstopdf)             Output file: <../figures/gru/concat/model-eps-converted-
 to.pdf>
-(epstopdf)                    date: 2017-06-07 18:15:02
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 10614 bytes
 (epstopdf)             Command: <repstopdf --outfile=../figures/gru/concat/mode
 l-eps-converted-to.pdf ../figures/gru/concat/model.eps>
 (epstopdf)             \includegraphics on input line 100.
 Package epstopdf Info: Output file is already uptodate.
 
-<../figures/gru/concat/model-eps-converted-to.pdf, id=202, 706.64pt x 841.1425p
+<../figures/gru/concat/model-eps-converted-to.pdf, id=207, 706.64pt x 841.1425p
 t>
 File: ../figures/gru/concat/model-eps-converted-to.pdf Graphic file (type pdf)
  <use ../figures/gru/concat/model-eps-converted-to.pdf>
@@ -916,18 +916,18 @@ Overfull \hbox (15.00586pt too wide) in paragraph at lines 100--101
  []
 
 Package epstopdf Info: Source file: <../figures/gru/concat.pool.100/model.eps>
-(epstopdf)                    date: 2017-06-09 09:16:39
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 22940 bytes
 (epstopdf)             Output file: <../figures/gru/concat.pool.100/model-eps-c
 onverted-to.pdf>
-(epstopdf)                    date: 2017-06-10 10:10:07
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 10993 bytes
 (epstopdf)             Command: <repstopdf --outfile=../figures/gru/concat.pool
 .100/model-eps-converted-to.pdf ../figures/gru/concat.pool.100/model.eps>
 (epstopdf)             \includegraphics on input line 103.
 Package epstopdf Info: Output file is already uptodate.
 
-<../figures/gru/concat.pool.100/model-eps-converted-to.pdf, id=203, 716.6775pt 
+<../figures/gru/concat.pool.100/model-eps-converted-to.pdf, id=208, 716.6775pt 
 x 1014.79124pt>
 File: ../figures/gru/concat.pool.100/model-eps-converted-to.pdf Graphic file (t
 ype pdf)
@@ -942,18 +942,18 @@ Overfull \hbox (15.00737pt too wide) in paragraph at lines 103--104
  []
 
 Package epstopdf Info: Source file: <../figures/gru/concat.pool.491/model.eps>
-(epstopdf)                    date: 2017-06-07 18:21:08
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 20180 bytes
 (epstopdf)             Output file: <../figures/gru/concat.pool.491/model-eps-c
 onverted-to.pdf>
-(epstopdf)                    date: 2017-06-10 10:10:08
+(epstopdf)                    date: 2017-07-29 10:05:54
 (epstopdf)                    size: 10614 bytes
 (epstopdf)             Command: <repstopdf --outfile=../figures/gru/concat.pool
 .491/model-eps-converted-to.pdf ../figures/gru/concat.pool.491/model.eps>
 (epstopdf)             \includegraphics on input line 106.
 Package epstopdf Info: Output file is already uptodate.
 
-<../figures/gru/concat.pool.491/model-eps-converted-to.pdf, id=204, 706.64pt x 
+<../figures/gru/concat.pool.491/model-eps-converted-to.pdf, id=209, 706.64pt x 
 841.1425pt> [19 <../figures/gru/concat/model-eps-converted-to.pdf>]
 File: ../figures/gru/concat.pool.491/model-eps-converted-to.pdf Graphic file (t
 ype pdf)
@@ -975,7 +975,7 @@ net-work with \OT1/cmr/m/it/10 valid \OT1/cmr/m/n/10 padding (see \OT1/cmr/m/it
  []
 
 [21 <../figures/gru/concat.pool.491/model-eps-converted-to.pdf>]
-<../figures/concatenation/concat.class.deeplift/deeplift_sum_hist.pdf, id=234, 
+<../figures/concatenation/concat.class.deeplift/deeplift_sum_hist.pdf, id=239, 
 462.52798pt x 346.89601pt>
 File: ../figures/concatenation/concat.class.deeplift/deeplift_sum_hist.pdf Grap
 hic file (type pdf)
@@ -996,22 +996,164 @@ org/locus/S000004640/overview).
  []
 
 [22 <../figures/concatenation/concat.class.deeplift/deeplift_sum_hist.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 142.
+! You can't use `macro parameter character #' in horizontal mode.
+l.141 #
+        YDR277C     6.0 MTH1 / YDR277C
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
-[23]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 142.
+! You can't use `macro parameter character #' in horizontal mode.
+l.142 #
+        YGL096W     2.0 TOS8 / YGL096W
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.143 #
+        YGL099W     7.0 LSG1 / YGL099W
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.144 #
+        YGR123C     3.0 PPT1 / YGR123C
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.145 #
+        YHR136C    10.0 SPL2 / YHR136C
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.146 #
+        YIR026C     4.0 YVH1 / YIR026C
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.147 #
+        YKL109W     1.0 HAP4 / YKL109W
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.148 #
+        YLR452C     9.0 SST2 / YLR452C
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.149 #
+        YOR101W     8.0 RAS1 / YOR101W
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.150 #
+        YPL230W     5.0 USV1 / YPL230W
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+<../figures/concatenation/concat.regress.deeplift/deeplift_seq_0.pdf, id=275, 1
+445.4pt x 144.54pt>
+File: ../figures/concatenation/concat.regress.deeplift/deeplift_seq_0.pdf Graph
+ic file (type pdf)
+
+<use ../figures/concatenation/concat.regress.deeplift/deeplift_seq_0.pdf>
+Package pdftex.def Info: ../figures/concatenation/concat.regress.deeplift/deepl
+ift_seq_0.pdf used on input line 159.
+(pdftex.def)             Requested size: 344.9843pt x 34.49841pt.
+
+Overfull \hbox (14.9843pt too wide) in paragraph at lines 159--160
+[][] 
+ []
+
+
+! LaTeX Error: Unknown graphics extension: .743129.jpg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.163 ...t/deeplift_seq_grad-times-inp.743129.jpg}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Unknown graphics extension: .4281.jpg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.171 ...plift/deeplift_seq_sum-173-exp.4281.jpg}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+<../figures/concatenation/concat.regress.deeplift/deeplift_seq_sum-173-exp-6107
+-genes.pdf, id=276, 925.05597pt x 144.54pt>
+File: ../figures/concatenation/concat.regress.deeplift/deeplift_seq_sum-173-exp
+-6107-genes.pdf Graphic file (type pdf)
+
+<use ../figures/concatenation/concat.regress.deeplift/deeplift_seq_sum-173-exp-
+6107-genes.pdf>
+Package pdftex.def Info: ../figures/concatenation/concat.regress.deeplift/deepl
+ift_seq_sum-173-exp-6107-genes.pdf used on input line 176.
+(pdftex.def)             Requested size: 345.0037pt x 53.90681pt.
+
+Overfull \hbox (15.0037pt too wide) in paragraph at lines 176--177
+[][] 
+ []
+
+[23 <../figures/concatenation/concat.regress.deeplift/deeplift_seq_0.pdf> <../f
+igures/concatenation/concat.regress.deeplift/deeplift_seq_sum-173-exp-6107-gene
+s.pdf
+
+pdfTeX warning: pdflatex (file ../figures/concatenation/concat.regress.deeplift
+/deeplift_seq_sum-173-exp-6107-genes.pdf): PDF inclusion: multiple pdfs with pa
+ge group included in a single page
+>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 192.
+ [24]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 192.
  (./log.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 142.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 142.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 192.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 192.
 Package rerunfilecheck Info: File `log.out' has not changed.
-(rerunfilecheck)             Checksum: 30AF341C3C8EECA4FD631CE91950E4FD;509.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 142.
+(rerunfilecheck)             Checksum: 6F80B1992BB86E9A4C18944AD6E3D649;569.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 192.
  ) 
 Here is how much of TeX's memory you used:
- 5704 strings out of 493014
- 87048 string characters out of 6133351
- 166524 words of memory out of 5000000
- 9134 multiletter control sequences out of 15000+600000
+ 5723 strings out of 493014
+ 87944 string characters out of 6133351
+ 167524 words of memory out of 5000000
+ 9145 multiletter control sequences out of 15000+600000
  8241 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  29i,6n,30p,424b,404s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1022,10 +1164,10 @@ usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
 r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
 local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on log.pdf (23 pages, 799164 bytes).
+Output written on log.pdf (24 pages, 1642504 bytes).
 PDF statistics:
- 312 PDF objects out of 1000 (max. 8388607)
- 216 compressed objects within 3 object streams
- 45 named destinations out of 1000 (max. 500000)
- 201 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 357 PDF objects out of 1000 (max. 8388607)
+ 235 compressed objects within 3 object streams
+ 47 named destinations out of 1000 (max. 500000)
+ 219 words of extra memory for PDF output out of 10000 (max. 10000000)
 

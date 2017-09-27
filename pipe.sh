@@ -124,3 +124,8 @@ python modeling/single_layer/interpret.paper.py
 #------------ Concatenation network -------------# 
 python modeling/concatenation/concat.class.py
 python modeling/concatenation/concat.class.deeplift.py
+python modeling/concatenation/concat.regres.py
+
+
+#------------- Adversarial training ----------# 
+python modeling/adversarial/ocncat.regress.adv.py

@@ -16,7 +16,7 @@
 16	37C to 25C shock - 15 min
 17	37C to 25C shock - 30 min
 18	37C to 25C shock - 45 min
-19	37C to 25C shock - 60 min
+19	37C to 25C shock - 60 min 
 20	37C to 25C shock - 90 min
 21	"heat shock 17 to 37, 20 minutes"
 22	"heat shock 21 to 37, 20 minutes"
