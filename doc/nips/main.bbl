@@ -1,0 +1,52 @@
+\begin{thebibliography}{1}
+
+\bibitem{deBoer:2011ic}
+Carl~G de~Boer and Timothy~R Hughes.
+\newblock {YeTFaSCo: a database of evaluated yeast transcription factor
+  sequence specificities}.
+\newblock {\em Nucleic Acids Research}, 40(D1):gkr993--D179, November 2011.
+
+\bibitem{Anonymous:_KTX_iBy}
+Avanti Shrikumar, Peyton Greenside, and Anshul Kundaje.
+\newblock {Reverse-complement parameter sharing improves deep learning models
+  for genomics | bioRxiv}.
+
+\bibitem{Gasch:2000wl}
+A~P Gasch, P~T Spellman, C~M Kao, O~Carmel-Harel, M~B Eisen, G~Storz,
+  D~Botstein, and P~O Brown.
+\newblock {Genomic expression programs in the response of yeast cells to
+  environmental changes.}
+\newblock {\em Molecular Biology of the Cell}, 11(12):4241--4257, December
+  2000.
+
+\bibitem{Middendorf:2004gta}
+Manuel Middendorf, Anshul Kundaje, Chris Wiggins, Yoav Freund, and Christina
+  Leslie.
+\newblock {Predicting genetic regulatory response using classification}.
+\newblock {\em Bioinformatics}, 20(suppl 1):i232--i240, August 2004.
+
+\bibitem{Ruan:2006hl}
+Jianhua Ruan and Weixiong Zhang.
+\newblock {A bi-dimensional regression tree approach to the modeling of gene
+  expression regulation.}
+\newblock {\em Bioinformatics}, 22(3):332--340, February 2006.
+
+\bibitem{Quang:2016jt}
+Daniel Quang and Xiaohui Xie.
+\newblock {DanQ: a hybrid convolutional and recurrent deep neural network for
+  quantifying the function of DNA sequences.}
+\newblock {\em Nucleic Acids Research}, 44(11):e107--e107, June 2016.
+
+\bibitem{Kelley:2016bv}
+David~R Kelley, Jasper Snoek, and John~L Rinn.
+\newblock {Basset: learning the regulatory code of the accessible genome with
+  deep convolutional neural networks.}
+\newblock {\em Genome research}, 26(7):990--999, July 2016.
+
+\bibitem{Alipanahi:2015fb}
+Babak Alipanahi, Andrew Delong, Matthew~T Weirauch, and Brendan~J Frey.
+\newblock {Predicting the sequence specificities of DNA- and RNA-binding
+  proteins by deep learning.}
+\newblock {\em Nature Biotechnology}, 33(8):831--838, August 2015.
+
+\end{thebibliography}

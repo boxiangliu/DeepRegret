@@ -129,3 +129,11 @@ python modeling/concatenation/concat.regres.py
 
 #------------- Adversarial training ----------# 
 python modeling/adversarial/ocncat.regress.adv.py
+
+
+#------------ Reverse complement -----------# 
+for i in {2..5}; do python modeling/revcomp/concat.regres.py $i; done
+
+
+#------------ Dinucleotide shuffle ---------#
+for i in {1..5}; do python modeling/dinuc_shuffle/concat.regres.py $i; done

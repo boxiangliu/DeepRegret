@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Methodology}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Sequence module}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Regulator module}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Integration module}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Dataset and Pre-processing}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{Training methodology}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Results}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Regression and Classification Performances}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Recovering Known Motifs}{section.3}% 10
