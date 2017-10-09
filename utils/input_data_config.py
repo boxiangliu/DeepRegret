@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import random
 import pickle
-
+from deeplift import dinuc_shuffle
 
 
 
@@ -95,13 +95,22 @@ def discretize(x):
 			y[i]=1
 	return y
 
-def reformat(data):
+def reformat(data,conv1d=False,seq_only=False,experiment_name=None):
 	nrow=data['one_hot_sequence'].shape[0]
-	seq=np.reshape(np.vstack(data['one_hot_sequence']),[nrow,4,1000,1])
-	reg_exp=np.vstack(data['reg_exp'])
-	exp=np.array(data['expression'])
-	label=discretize(exp)
-	data2={'seq':seq, 'reg':reg_exp, 'expr':exp, 'class':label, 'uid': data['UID'], 'name': data['NAME'], 'experiment': data['experiment'], 'sequence': data['sequence']}
+	if conv1d:
+		seq=np.swapaxes(np.reshape(np.vstack(data['one_hot_sequence']),[nrow,4,1000]),1,2)
+	else:
+		seq=np.reshape(np.vstack(data['one_hot_sequence']),[nrow,4,1000,1])
+
+
+	if seq_only==False:
+		reg_exp=np.vstack(data['reg_exp'])
+		exp=np.array(data['expression'])
+		label=discretize(exp)
+		data2={'seq':seq, 'reg':reg_exp, 'expr':exp, 'class':label, 'uid': data['UID'], 'name': data['NAME'], 'experiment': data['experiment'], 'sequence': data['sequence'], 'real': data['real']}
+	else:
+		exp=data[experiment_name]
+		data2={'seq':seq, 'expr':exp, 'uid': data['UID'], 'name': data['NAME'], 'sequence': data['sequence'], 'real': data['real']}
 	return data2
 
 
@@ -109,7 +118,7 @@ def reformat(data):
 # expr_file='../data/complete_dataset.txt'
 # reg_names_file='../data/reg_names_R.txt'
 
-def read_data_sets(train_pct=80,val_pct=10,test_pct=10,mode='random',seq_file='../data/yeast_promoters.txt',expr_file='../data/complete_dataset.txt',reg_names_file='../data/reg_names_R.txt'):
+def read_data_sets(train_pct=80,val_pct=10,test_pct=10,mode='random',conv1d=False,add_shuffle=False,seq_only=False,seq_file='../data/yeast_promoters.txt',expr_file='../data/complete_dataset.txt',reg_names_file='../data/reg_names_R.txt'):
 	'''Read data from text files into numpy arrays
 		Args:
 		seq_file: promoter sequence file.
@@ -127,30 +136,56 @@ def read_data_sets(train_pct=80,val_pct=10,test_pct=10,mode='random',seq_file='.
 	expr_data['NAME']=[x[10:21].strip() for x in expr_data['NAME']]
 	expr_data[expr_data.columns[2:]]=expr_data[expr_data.columns[2:]].astype('float32')
 	promoters = pd.read_table(seq_file, names=["UID", "sequence"])
-
-
-	# Some transformation: 
-	target_expr_data = pd.melt(expr_data, id_vars=["UID","NAME"], var_name="experiment", value_name="expression")
+	promoters['real'] = 1 # denotes real promoters
 	promoters.loc[:, "one_hot_sequence"] = [one_hot(seq) for seq in promoters.loc[:, "sequence"]]
-	reg_data = pd.merge(reg_names, expr_data, on="UID", how="inner").drop("UID", axis=1)
 
 
-	reg = pd.DataFrame()
-	for col in range(len(reg_data.columns)):
-		data = np.array([exp_level for exp_level in reg_data.iloc[:, col]])
-		reg = reg.append(pd.DataFrame({"experiment": reg_data.columns[col], "reg_exp": [data]}))
+	# Create dinucleotide shuffled sequences:
+	if add_shuffle:
+		random.seed(a=42)
+		shuffled_promoters=[]
+		for i in xrange(promoters.shape[0]):
+			shuffled_promoters.append(dinuc_shuffle.dinuc_shuffle(promoters.sequence[i]))
+		promoters = pd.concat([promoters,pd.DataFrame({'UID':promoters.UID.tolist(),'sequence':shuffled_promoters, 'real':0})])
 
-	data_complete = pd.merge(promoters, target_expr_data, on="UID", how="inner").merge(reg, on="experiment", how="inner")
+
+	if seq_only:
+		data_complete=pd.merge(promoters,expr_data,on='UID',how='inner')
+
+		# train_pct=90
+		# val_pct=5
+		# test_pct=5
+		# mode = 'whole_gene'
+		experiment_name=expr_data.drop(['UID','NAME'],axis=1).columns.tolist()
+
+		train,val,test=partition(data_complete,(train_pct,val_pct,test_pct), mode=mode)
+
+		train_data=reformat(train,conv1d,seq_only,experiment_name) if train_pct > 0 else []
+		val_data=reformat(val,conv1d,seq_only,experiment_name) if val_pct > 0 else []
+		test_data=reformat(test,conv1d,seq_only,experiment_name) if test_pct > 0 else []
+
+	else:
+		# Some transformation: 
+		target_expr_data = pd.melt(expr_data, id_vars=["UID","NAME"], var_name="experiment", value_name="expression")
+		reg_data = pd.merge(reg_names, expr_data, on="UID", how="inner").drop("UID", axis=1)
 
 
-	# train_pct=80
-	# val_pct=10
-	# test_pct=10
-	# mode = 'random'
-	train, val, test = partition(data_complete, (train_pct,val_pct,test_pct), mode=mode)
+		reg = pd.DataFrame()
+		for col in range(len(reg_data.columns)):
+			data = np.array([exp_level for exp_level in reg_data.iloc[:, col]])
+			reg = reg.append(pd.DataFrame({"experiment": reg_data.columns[col], "reg_exp": [data]}))
 
-	train_data=reformat(train) if train_pct > 0 else []
-	val_data=reformat(val) if val_pct > 0 else []
-	test_data=reformat(test) if test_pct > 0 else []
+		data_complete = pd.merge(promoters, target_expr_data, on="UID", how="inner").merge(reg, on="experiment", how="inner")
+		data_complete.expression=data_complete.expression*data_complete.real # force dinucleotide shuffled sequences to have 0 expression. 
+
+		# train_pct=80
+		# val_pct=10
+		# test_pct=10
+		# mode = 'random'
+		train, val, test = partition(data_complete, (train_pct,val_pct,test_pct), mode=mode)
+
+		train_data=reformat(train,conv1d) if train_pct > 0 else []
+		val_data=reformat(val,conv1d) if val_pct > 0 else []
+		test_data=reformat(test,conv1d) if test_pct > 0 else []
 
 	return [train_data,val_data,test_data]
