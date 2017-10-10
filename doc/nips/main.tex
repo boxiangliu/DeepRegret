@@ -26,9 +26,9 @@
 \usepackage{caption}
 \usepackage{float}
 \usepackage{graphicx}
-\usepackage{subfig}
 \usepackage{wrapfig}
 \usepackage{authblk}
+\usepackage{subcaption}
 
 \graphicspath{ {./} }
 
@@ -67,13 +67,10 @@ Understanding gene regulatory mechanisms is a central problem in computational b
 
 \section{Introduction}
 
-The faithful prediction of gene expression levels based on primary DNA sequence is a critical milestone toward fully comprehending cellular dynamics. Modulation of expression levels allows the host cell to react and adapt to its environment, enhancing the ability of the cell to survive in the face of constantly-evolving pressures. Many factors have the ability to influence gene expression levels including environmental stresses, the cell cycle, and stochastic fluctuations of cellular states. The cell can perceive these changes using molecular sensors, which further transmit information through molecular signaling cascades, ultimately resulting in activation of transcriptional regulatory elements. These regulatory elements have the capacity to bind genomic DNA in a specific manner and activate or repress expression of genes to control the cell's response to the sensed change in state.
+The accurate prediction of gene expression based on the interaction between transcription regulators and DNA sequence is a critical milestone toward fully comprehending cellular regulome. Several studies have contructed computational models to tackle this problem. Some use the sequence information \cite{Bussemaker:2001ft,Phuong:2004kk}, while others use the transcription regulator expression \cite{Soinov:2003iz,Segal:2003ks}. In particular, GeneClass\cite{Middendorf:2004gta} and BDTree\cite{Ruan:2006hl} model gene expression based on the interaction between sequence motif and regulator, and thus can discover previously unknown regulatory patterns. However, due to modeling assumptions, both methods require discretized expression values, which severely limits their utility. Further, they both assume prior knowledge on sequence motifs, which is unavailable in certain cases. Perhaps unsurprisingly, aforementioned studies all use yeast as the model organism. The budding yeast \textit{Saccharomyces cerevisiae} possesses a relatively simple transcriptional regulatory architecture governed primarily by promoter sequence directly upstream of the gene. Such architecture has very few long range interactions such as those in higher-order organisms, and is ideal for computational modeling. 
 
-Expression levels can, therefore, be conceptualized at the most basic level as the output of a complex function of regulatory element/DNA interactions. Specifically, transcription factors, proteins that bind DNA and have the ability to activate or repress transcription of downstream genes, tend to preferentially bind certain DNA sequences termed “motifs.” However, expression of the downstream gene relies on both the presence of these motifs in the gene’s promoter sequence as well as the expression levels of the regulatory elements themselves. Without expression of the required regulatory element, the presence of the desired motif will fail to impact expression levels. Additionally, transcription factors exhibit what is known as "combinatorial control" over gene expression levels. In this scenario, the role of the transcription factor to either promote or repress gene expression is dictated by the presence of other transcription factors binding in the promoter region alongside it.
 
-The budding yeast \textit{Saccharomyces cerevisiae} represents an ideal model organism to learn the grammar of regulatory element/promoter interactions. The transcriptional regulatory architecture of this yeast species is relatively simple, with the expression of the majority of genes being governed primarily by interactions between regulatory elements and the promoter sequence directly upstream of the gene. There exist very few long range genomic interactions in \textit{S. cerevisiae} such as those that would complicate such a project in higher-order organisms. We also expect relatively few binding interactions to have large effects on downstream transcription, as previous work has shown the overwhelming majority of promoters to be bound by fewer than 5 regulatory elements.
-
-Here, we present a DNN architecture that is capable of predicting gene expression levels given the expression level of the complete set of \textit{S. cerevisiae} regulatory elements as well as the 1 kilobase sequence directly upstream of the transcription start site. This model takes advantage not only of count and spatial relationships between sequence motifs in the promoters of the individual genes, but also the amount of each regulatory element available to interact with those motifs. We demonstrate that our model achieves higher accuracy than the state-of-the-art method. Furthermore, since the sequence specificities of most DNA-binding regulatory elements have been experimentally validated \cite{deBoer:2011ic}, we show that our model provides sensible prediction based on existing knowledge about \textit{S. cerevisiae}.
+We present a deep neural network architecture to address the limitations with previous methods. Our architecture models gene expression as the interaction between trans (signaling molecules and transcription factors) and cis (1kbp promoter sequence) regulatory components. Our model automatically extract sequence motifs from raw sequences, thus eliminating the need for prior knowledge and feature engineering. Our model predicts gene expression values in $\mathbb{R}$, akin to microarray and sequencing measurement. We demonstrate that our model outperforms the state-of-the-art methods, and provides sensible prediction concordant with existing knowledge of yeast biology.
 
 
 \section{Methodology}
@@ -103,14 +100,14 @@ In principle, the output from sequence module represents gene-specific informati
 We utilized the Gasch \cite{Gasch:2000wl} dataset which used microarray to measure a total of 6100 genes under 173 experimental conditions. The measurements were given as $log_2$ expression values representing the fold change w.r.t. the untreated reference condition. We used 1kbp sequences upstream of the transcription start site as the sequence predictors and a set of 472 transcription factors and signaling molecules as the regulator predictors. We used a 80-10-10 split among training, validation, and test datasets.
 
 
-\subsection{Training methodology}
-We trained our models using SGD with a learning rate of 0.01 and momentum of 0.5. We decrease the learning rates by half every five epoch if no improvement in validation accuracy is observed. All training were performed on Nvidia GeForce GTX 970 using Keras 1.2.2 with Tensorflow backend.
+% \subsection{Training methodology}
+% We trained our models using SGD with a learning rate of 0.01 and momentum of 0.5. We decrease the learning rates by half every five epoch if no improvement in validation accuracy is observed. All training were performed on Nvidia GeForce GTX 970 using Keras 1.2.2 with Tensorflow backend.
 
 
 \section{Results}
 
 \subsection{Regression and Classification Performances}
-We compared our model against two previous models, GeneClass \cite{Middendorf:2004gta} and BDTree \cite{Ruan:2006hl}, using the same dataset by Gasch et al \cite{Gasch:2000wl}. The GeneClass model is a boosted alternating decision tree, and the BDTree model is a bidirectional regression tree. We trained our model to predict real-valued expression levels as well as discrete labels in $\{-1,0,1\}$ to represent upregulation, baseline, and downregulation. In the classification task, the dataset is discretized such that expression values in $[-\infty,-0.5]$ are converted to -1, $[-0.5,0.5]$ to 0, and $[0.5,\infty]$ to +1. Our best model outperformed the previous state-of-the-art by 16.6\% (Table \ref{table:classification performance}). In addition, our model achieved a pearson correlation of 0.82 for the regression task on the test set (Figure \ref{fig:correlation}). We were not able to compare our model with GeneClass or BDTree because the authors only reported classification results.
+We compared our model against two state-of-the-art models, GeneClass \cite{Middendorf:2004gta} and BDTree \cite{Ruan:2006hl}, using the same dataset by Gasch et al \cite{Gasch:2000wl}. The GeneClass model is a boosted alternating decision tree, and the BDTree model is a bidirectional regression tree. We trained our model to predict real-valued expression levels as well as discrete labels in $\{-1,0,1\}$ to represent upregulation, baseline, and downregulation. In the classification task, the dataset is discretized such that expression values in $[-\infty,-0.5]$ are converted to -1, $[-0.5,0.5]$ to 0, and $[0.5,\infty]$ to +1. Our best model outperformed the previous state-of-the-art by 16.6\% (Table \ref{table:classification performance}). In addition, our model achieved a pearson correlation of 0.82 for the regression task on the test set (Figure \ref{fig:correlation}). For regression, we could not compare our models because GeneClass or BDTree only reported classification results.
 
 \begin{table}[!hbt]
 \caption{Classification performance}
@@ -144,21 +141,97 @@ We compared our model against two previous models, GeneClass \cite{Middendorf:20
 \end{table}
 
 \subsection{Recovering Known Motifs}
-Existing models such as GeneClass and BDTree relies on existing motif annotations and lacks the ability to infer \textit{de novo} motif. Convolutional neural networks has the ability to learn filter weights and extracts motif information automatically. Studies have shown that known motifs can be recovered by CNNs trained on ChIP-seq data \cite{Quang:2016jt,Kelley:2016bv,Alipanahi:2015fb}. We found that our model learns both known and \textit{de novo} motifs. Figure 1 shows four known motifs recovered by our model. 
+Unlike GeneClass and BDTree which rely on existing motif annotations, our model learn filter weights and extracts motif information automatically.  We found that our model learns both known and \textit{de novo} motifs. Figure 1 shows four known motifs recovered by our model. 
+
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{.475\textwidth}
+        \includegraphics[width=\textwidth]{fig/correlation_tensor_product.pdf}
+        \caption[Correlation]{Correlation}
+    \end{subfigure}\hfill
+    \parbox{.475\textwidth}{
+        \begin{subfigure}{.475\linewidth}
+            \includegraphics[width=\textwidth]{fig/tomtom/dot6p_2.png}
+            \caption{DOT6P}
+    \end{subfigure}
+    \begin{subfigure}{.475\linewidth}
+            \includegraphics[width=\textwidth]{fig/tomtom/rpn4p.png}
+            \caption{RPN4P}
+    \end{subfigure}\\
+    \begin{subfigure}{.475\linewidth}
+            \includegraphics[width=\textwidth]{fig/tomtom/sfp1p_2.png}
+            \caption{SFP1P}
+    \end{subfigure}
+    \begin{subfigure}{.475\linewidth}
+            \includegraphics[width=\textwidth]{fig/tomtom/stb3p.png}
+            \caption{STB3P}
+    \end{subfigure}
+    }
+    \caption{(a) Predicted vs grounth truth (b-e) examples of recovered motifs}\label{fig:1}
+\end{figure}
+
+\subsection{Recovering Master Regulators}
+A few studies have shown that yeast master regulators often manifest as key feature in prediction models \cite{Kundaje:2006ho}. To understand whether our model reflect the tran-regulatory component, we decided to rank the relative importance of the regulator module inputs, and test if such rank captures the master regulators in \textit{S. cerevisiae}. We reasoned that perturbations in regulators with high feature importance would lead to large change in the output. Therefore, we estimated the relative importance as the gradient (w.r.t to output) times the magnitude of input (G-by-I). We summed the G-by-I values across all genes and conditions to obtain the global estimate of feature importance. Notably, several master regulators such as USV1, YVH1, MSN4 appear as top features. 
+
+
+\begin{table}[!hbt]
+\caption{Rank of regulator module inputs}
+\centering
+ \begin{tabular}{|c | c|} 
+ \hline
+ Rank & Regulator \\
+ \hline
+ 1 &  USV1 / YPL230W \\ 
+ \hline
+ 2 & DAL80 / YKR034W \\
+ \hline
+ 3 & XBP1 / YIL101C \\
+ \hline
+ 4 & PPT1 / YGR123C \\
+ \hline
+ 5 & LSG1 / YGL099W \\
+ \hline
+ 6 & CIN5 / YOR028C \\
+ \hline
+ 7 & YVH1 / YIR026C \\
+ \hline
+ 8 & TPK1 / YJL164C \\
+ \hline
+ 9 & GAC1 / YOR178C \\
+ \hline
+ 10 & MSN4 / YKL062W \\
+ \hline
+\end{tabular}
+\label{table:rank of regulator module inputs}
+\end{table}
+
+\subsection{\textit{in silico} Mutagenesis Reflects \textit{in vivo} Measurements}
+Ultimately, the model should make predictions similar to actual experimental measurement, even for previously unseen conditions. Therefore, we performed \textit{in silico} knockout experiment on MSN2/4, where we replaced all instances of 'AGGGG' with neutral 'NNNNN', and reduced the expression level of MSN2/4 by 32 fold. MSN2/4 are activated under heat shock but are inactive under steady-state growth \cite{Sadeh:2011eg}. As expected, we observed that MSN2/4 target genes experience greater change under heat shock conditions than steady-state growth condition \ref{fig:target gene expression change}. We also compared our prediction against microarray measurement in a actual MSN2/4 knockout strain, and observed general agreement between the two (spearman correlation = 0.486, \ref{fig:predicted vs ground truth msn24 ko})
 
 
 \begin{figure}
 \centering
-\subfloat[Correlation]{\includegraphics[trim={0.3in 0 0 0},clip,width=0.45\textwidth]{fig/correlation_tensor_product.pdf}\label{fig:correlation}}
-
-\subfloat[DOT6P]{\includegraphics[width=0.2\textwidth]{fig/tomtom/dot6p_2.png}\label{fig:2a}}
-\subfloat[RPN4P]{\includegraphics[width=.2\textwidth]{fig/tomtom/rpn4p.png}\label{fig:2b}}
-\subfloat[SFP1P]{\includegraphics[width=.2\textwidth]{fig/tomtom/sfp1p_2.png}\label{fig:2c}}
-\subfloat[STB3P]{\includegraphics[width=.2\textwidth]{fig/tomtom/stb3p.png}\label{fig:2d}}
-
-\caption{ (a) Predicted vs grounth truth (b-e) examples of recovered motifs}
-
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\textwidth]{fig/msn24_ko_target_genes.png}
+  \caption{Target gene expression change}
+  \label{fig:target gene expression change}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\textwidth]{fig/msn24_ko_37C_diff_expr_rank.pdf}
+  \caption{Predicted vs ground truth}
+  \label{fig:predicted vs ground truth msn24 ko}
+\end{subfigure}
+\caption{(a) The expression of MSN2/4 known target gene experience larger change under stress conditions. (b) Predicted expression change vs actual microarray experiment.}
+\label{fig:fig2}
 \end{figure}
+
+
+% \section{Conclusion}
+% We presented a deep learning architecture to model the genome-wide gene expression as the interaction between cis (1kb promoter sequence) and trans (signaling molecules and transcription factors). Our model performed the state-of-the-art model by ~17\%. It recovered known motifs, and attributed high feature importance to known master regulator. Through \textit{in silico} knockout experiments, our model make predictions similar to microarray measurements. 
+
 
 \bibliographystyle{unsrt}
 \bibliography{references}

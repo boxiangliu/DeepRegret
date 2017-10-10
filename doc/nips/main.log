@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  2 OCT 2017 16:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  8 OCT 2017 15:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -671,38 +671,28 @@ File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 \Gin@req@height=\dimen145
 \Gin@req@width=\dimen146
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/subfig/subfig.sty
-Package: subfig 2005/06/28 ver: 1.3 subfig package
-\c@KVtest=\count122
-\sf@farskip=\skip55
-\sf@captopadj=\dimen147
-\sf@capskip=\skip56
-\sf@nearskip=\skip57
-\c@subfigure=\count123
-\c@subfigure@save=\count124
-\c@lofdepth=\count125
-\c@subtable=\count126
-\c@subtable@save=\count127
-\c@lotdepth=\count128
-\sf@top=\skip58
-\sf@bottom=\skip59
-)
 (/usr/local/texlive/2016/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen148
-\WF@size=\dimen149
-\c@WF@wrappedlines=\count129
+\wrapoverhang=\dimen147
+\WF@size=\dimen148
+\c@WF@wrappedlines=\count122
 \WF@box=\box30
 \WF@everypar=\toks27
 Package: wrapfig 2003/01/31  v 3.6
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/preprint/authblk.sty
 Package: authblk 2001/02/27 1.3 (PWD)
-\affilsep=\skip60
-\@affilsep=\skip61
-\c@Maxaffil=\count130
-\c@authors=\count131
-\c@affil=\count132
-) (./main.aux)
+\affilsep=\skip55
+\@affilsep=\skip56
+\c@Maxaffil=\count123
+\c@authors=\count124
+\c@affil=\count125
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
+\c@subfigure=\count126
+\c@subtable=\count127
+)
+(./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
@@ -797,7 +787,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count133
+\c@section@level=\count128
 )
 LaTeX Info: Redefining \ref on input line 58.
 LaTeX Info: Redefining \pageref on input line 58.
@@ -822,23 +812,22 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
 Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count134
-\scratchdimen=\dimen150
+\scratchcounter=\count129
+\scratchdimen=\dimen149
 \scratchbox=\box32
-\nofMPsegments=\count135
-\nofMParguments=\count136
+\nofMPsegments=\count130
+\nofMParguments=\count131
 \everyMPshowfont=\toks28
-\MPscratchCnt=\count137
-\MPscratchDim=\dimen151
-\MPnumerator=\count138
-\makeMPintoPDFobject=\count139
+\MPscratchCnt=\count132
+\MPscratchDim=\dimen150
+\MPnumerator=\count133
+\makeMPintoPDFobject=\count134
 \everyMPtoPDFconversion=\toks29
 ) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -885,65 +874,92 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
  [1
 
 
-{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
- [2]
-<fig/correlation_tensor_product.pdf, id=78, 462.52798pt x 346.89601pt>
+LaTeX Warning: Reference `fig:correlation' on page 3 undefined on input line 11
+0.
+
+<fig/correlation_tensor_product.pdf, id=90, 462.52798pt x 346.89601pt>
 File: fig/correlation_tensor_product.pdf Graphic file (type pdf)
 
 <use fig/correlation_tensor_product.pdf>
 Package pdftex.def Info: fig/correlation_tensor_product.pdf used on input line 
-152.
-(pdftex.def)             Requested size: 178.86702pt x 140.74619pt.
+150.
+(pdftex.def)             Requested size: 188.80779pt x 141.60898pt.
 
-<fig/tomtom/dot6p_2.png, id=80, 625.1355pt x 426.393pt>
+<fig/tomtom/dot6p_2.png, id=91, 625.1355pt x 426.393pt>
 File: fig/tomtom/dot6p_2.png Graphic file (type png)
 
 <use fig/tomtom/dot6p_2.png>
-Package pdftex.def Info: fig/tomtom/dot6p_2.png used on input line 154.
-(pdftex.def)             Requested size: 79.49577pt x 54.21637pt.
+Package pdftex.def Info: fig/tomtom/dot6p_2.png used on input line 170.
+(pdftex.def)             Requested size: 89.68484pt x 61.17152pt.
 
-<fig/tomtom/rpn4p.png, id=82, 596.9502pt x 426.393pt>
+<fig/tomtom/rpn4p.png, id=93, 596.9502pt x 426.393pt>
 File: fig/tomtom/rpn4p.png Graphic file (type png)
 
 <use fig/tomtom/rpn4p.png>
-Package pdftex.def Info: fig/tomtom/rpn4p.png used on input line 155.
-(pdftex.def)             Requested size: 79.49577pt x 56.77982pt.
+Package pdftex.def Info: fig/tomtom/rpn4p.png used on input line 170.
+(pdftex.def)             Requested size: 89.68484pt x 64.06029pt.
 
-<fig/tomtom/sfp1p_2.png, id=83, 710.4141pt x 426.393pt>
+<fig/tomtom/sfp1p_2.png, id=94, 710.4141pt x 426.393pt>
 File: fig/tomtom/sfp1p_2.png Graphic file (type png)
 
 <use fig/tomtom/sfp1p_2.png>
-Package pdftex.def Info: fig/tomtom/sfp1p_2.png used on input line 156.
-(pdftex.def)             Requested size: 79.49577pt x 47.71014pt.
+Package pdftex.def Info: fig/tomtom/sfp1p_2.png used on input line 170.
+(pdftex.def)             Requested size: 89.68484pt x 53.82599pt.
 
-<fig/tomtom/stb3p.png, id=84, 653.3208pt x 426.393pt>
+<fig/tomtom/stb3p.png, id=95, 653.3208pt x 426.393pt>
 File: fig/tomtom/stb3p.png Graphic file (type png)
 
 <use fig/tomtom/stb3p.png>
-Package pdftex.def Info: fig/tomtom/stb3p.png used on input line 157.
-(pdftex.def)             Requested size: 79.49577pt x 51.88063pt.
- [3] (./main.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 167.
- [4 <./fig/correlation_tensor_product.pdf> <./fig/tomtom/dot6p_2.png> <./fig/to
+Package pdftex.def Info: fig/tomtom/stb3p.png used on input line 170.
+(pdftex.def)             Requested size: 89.68484pt x 58.53pt.
+ [3 <./fig/correlation_tensor_product.pdf> <./fig/tomtom/dot6p_2.png> <./fig/to
 mtom/rpn4p.png> <./fig/tomtom/sfp1p_2.png> <./fig/tomtom/stb3p.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 167.
- (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 167.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 167.
+LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 209.
+
+<fig/msn24_ko_target_genes.png, id=149, 469.755pt x 250.0542pt>
+File: fig/msn24_ko_target_genes.png Graphic file (type png)
+
+<use fig/msn24_ko_target_genes.png>
+Package pdftex.def Info: fig/msn24_ko_target_genes.png used on input line 217.
+(pdftex.def)             Requested size: 198.7425pt x 105.79277pt.
+
+<fig/msn24_ko_37C_diff_expr_rank.pdf, id=150, 505.89pt x 505.89pt>
+File: fig/msn24_ko_37C_diff_expr_rank.pdf Graphic file (type pdf)
+
+<use fig/msn24_ko_37C_diff_expr_rank.pdf>
+Package pdftex.def Info: fig/msn24_ko_37C_diff_expr_rank.pdf used on input line
+ 223.
+(pdftex.def)             Requested size: 198.7425pt x 198.74751pt.
+ (./main.bbl
+Underfull \vbox (badness 7777) has occurred while \output is active []
+
+ [4 <./fig/msn24_ko_target_genes.png> <./fig/msn24_ko_37C_diff_expr_rank.pdf>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 240.
+ [5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 240.
+
+(./main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 240.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 240.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 6A72700BE41925037840349BE36D156C;639.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 167.
+(rerunfilecheck)             Checksum: 65A14E698045DA89D524D71B3793F713;748.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 240.
  ) 
 Here is how much of TeX's memory you used:
- 10515 strings out of 493014
- 158068 string characters out of 6133351
- 282115 words of memory out of 5000000
- 13732 multiletter control sequences out of 15000+600000
- 34980 words of font info for 125 fonts, out of 8000000 for 9000
+ 10424 strings out of 493014
+ 157055 string characters out of 6133351
+ 278206 words of memory out of 5000000
+ 13648 multiletter control sequences out of 15000+600000
+ 37337 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,9n,49p,2028b,376s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,9n,46p,2028b,476s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
@@ -952,13 +968,15 @@ ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
 16/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
 6/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/
-texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist
-/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/typ
-e1/urw/times/utmri8a.pfb>
-Output written on main.pdf (4 pages, 1572066 bytes).
+texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2
+016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-
+dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2016/texmf-dist/font
+s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/ur
+w/times/utmri8a.pfb>
+Output written on main.pdf (5 pages, 1740439 bytes).
 PDF statistics:
- 193 PDF objects out of 1000 (max. 8388607)
- 134 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
- 18544 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 219 PDF objects out of 1000 (max. 8388607)
+ 154 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 19068 words of extra memory for PDF output out of 20736 (max. 10000000)
 

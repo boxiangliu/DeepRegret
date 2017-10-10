@@ -1,10 +1,39 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{deBoer:2011ic}
-Carl~G de~Boer and Timothy~R Hughes.
-\newblock {YeTFaSCo: a database of evaluated yeast transcription factor
-  sequence specificities}.
-\newblock {\em Nucleic Acids Research}, 40(D1):gkr993--D179, November 2011.
+\bibitem{Bussemaker:2001ft}
+Harmen~J Bussemaker, Hao Li, and Eric~D Siggia.
+\newblock {Regulatory element detection using correlation with expression}.
+\newblock {\em Nature Genetics}, 27(2):167--174, February 2001.
+
+\bibitem{Phuong:2004kk}
+Tu~Minh Phuong, Doheon Lee, and Kwang~Hyung Lee.
+\newblock {Regression trees for regulatory element identification}.
+\newblock {\em Bioinformatics}, 20(5):750--757, March 2004.
+
+\bibitem{Soinov:2003iz}
+Lev~A Soinov, Maria~A Krestyaninova, and Alvis Brazma.
+\newblock {Towards reconstruction of gene networks from expression data by
+  supervised learning}.
+\newblock {\em Genome biology}, 4(1):R6, January 2003.
+
+\bibitem{Segal:2003ks}
+Eran Segal, Michael Shapira, Aviv Regev, Dana Pe'er, David Botstein, Daphne
+  Koller, and Nir Friedman.
+\newblock {Module networks: identifying regulatory modules and their
+  condition-specific regulators from gene expression data}.
+\newblock {\em Nature Genetics}, 34(2):166--176, June 2003.
+
+\bibitem{Middendorf:2004gta}
+Manuel Middendorf, Anshul Kundaje, Chris Wiggins, Yoav Freund, and Christina
+  Leslie.
+\newblock {Predicting genetic regulatory response using classification}.
+\newblock {\em Bioinformatics}, 20(suppl 1):i232--i240, August 2004.
+
+\bibitem{Ruan:2006hl}
+Jianhua Ruan and Weixiong Zhang.
+\newblock {A bi-dimensional regression tree approach to the modeling of gene
+  expression regulation.}
+\newblock {\em Bioinformatics}, 22(3):332--340, February 2006.
 
 \bibitem{Anonymous:_KTX_iBy}
 Avanti Shrikumar, Peyton Greenside, and Anshul Kundaje.
@@ -19,34 +48,17 @@ A~P Gasch, P~T Spellman, C~M Kao, O~Carmel-Harel, M~B Eisen, G~Storz,
 \newblock {\em Molecular Biology of the Cell}, 11(12):4241--4257, December
   2000.
 
-\bibitem{Middendorf:2004gta}
-Manuel Middendorf, Anshul Kundaje, Chris Wiggins, Yoav Freund, and Christina
-  Leslie.
-\newblock {Predicting genetic regulatory response using classification}.
-\newblock {\em Bioinformatics}, 20(suppl 1):i232--i240, August 2004.
+\bibitem{Kundaje:2006ho}
+Anshul Kundaje, Manuel Middendorf, Mihir Shah, CHRIS~H WIGGINS, Yoav Freund,
+  and Christina Leslie.
+\newblock {A classification-based framework for predicting and analyzing gene
+  regulatory response}.
+\newblock {\em BMC bioinformatics}, 7(1):S5, March 2006.
 
-\bibitem{Ruan:2006hl}
-Jianhua Ruan and Weixiong Zhang.
-\newblock {A bi-dimensional regression tree approach to the modeling of gene
-  expression regulation.}
-\newblock {\em Bioinformatics}, 22(3):332--340, February 2006.
-
-\bibitem{Quang:2016jt}
-Daniel Quang and Xiaohui Xie.
-\newblock {DanQ: a hybrid convolutional and recurrent deep neural network for
-  quantifying the function of DNA sequences.}
-\newblock {\em Nucleic Acids Research}, 44(11):e107--e107, June 2016.
-
-\bibitem{Kelley:2016bv}
-David~R Kelley, Jasper Snoek, and John~L Rinn.
-\newblock {Basset: learning the regulatory code of the accessible genome with
-  deep convolutional neural networks.}
-\newblock {\em Genome research}, 26(7):990--999, July 2016.
-
-\bibitem{Alipanahi:2015fb}
-Babak Alipanahi, Andrew Delong, Matthew~T Weirauch, and Brendan~J Frey.
-\newblock {Predicting the sequence specificities of DNA- and RNA-binding
-  proteins by deep learning.}
-\newblock {\em Nature Biotechnology}, 33(8):831--838, August 2015.
+\bibitem{Sadeh:2011eg}
+A~Sadeh, N~Movshovich, M~Volokh, L~Gheber, and A~Aharoni.
+\newblock {Fine-tuning of the Msn2/4-mediated yeast stress responses as
+  revealed by systematic deletion of Msn2/4 partners. - PubMed - NCBI}.
+\newblock {\em Molecular Biology of the Cell}, 22(17):3127--3138, August 2011.
 
 \end{thebibliography}

@@ -1,0 +1,31 @@
+\begin{thebibliography}{1}
+
+\bibitem{Gasch:2000wl}
+A~P Gasch, P~T Spellman, C~M Kao, O~Carmel-Harel, M~B Eisen, G~Storz,
+  D~Botstein, and P~O Brown.
+\newblock {Genomic expression programs in the response of yeast cells to
+  environmental changes.}
+\newblock {\em Molecular Biology of the Cell}, 11(12):4241--4257, December
+  2000.
+
+\bibitem{Kelley:2016bv}
+David~R Kelley, Jasper Snoek, and John~L Rinn.
+\newblock {Basset: learning the regulatory code of the accessible genome with
+  deep convolutional neural networks.}
+\newblock {\em Genome research}, 26(7):990--999, July 2016.
+
+\bibitem{Shrikumar:2016uy}
+Avanti Shrikumar, Peyton Greenside, Anna Shcherbina, and Anshul Kundaje.
+\newblock {Not Just a Black Box: Learning Important Features Through
+  Propagating Activation Differences}.
+\newblock {\em arXiv.org}, May 2016.
+
+\bibitem{Samek:2016hk}
+Wojciech Samek, Alexander Binder, Gr{\'e}goire Montavon, Sebastian Lapuschkin,
+  and Klaus-Robert M{\"u}ller.
+\newblock {Evaluating the Visualization of What a Deep Neural Network Has
+  Learned.}
+\newblock {\em IEEE transactions on neural networks and learning systems},
+  pages 1--14, August 2016.
+
+\end{thebibliography}

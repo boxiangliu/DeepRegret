@@ -1,0 +1,5 @@
+\contentsline {section}{\numberline {1}Yeast Microarray Data}{2}
+\contentsline {section}{\numberline {2}Neural Network Architecture}{2}
+\contentsline {section}{\numberline {3}Motif discovery}{2}
+\contentsline {section}{\numberline {4}Ranking regulator by feature importance}{5}
+\contentsline {section}{\numberline {5}\textit {in silico} Mutagenesis}{5}
